@@ -18,10 +18,10 @@ public class PlayerController : Controller
     // Update is called once per frame
     void Update()
     {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
         input = Vector3.ClampMagnitude(input, 1f);
         input *= speed;
-        anim.SetFloat("Forward", Input.GetAxis("Vertical"));
-        anim.SetFloat("Right", Input.GetAxis("Horizontal"));
+        anim.SetFloat("Forward", input.y);
+        anim.SetFloat("Right", input.x);
     }
 }

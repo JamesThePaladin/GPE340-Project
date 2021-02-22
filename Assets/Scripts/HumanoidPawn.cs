@@ -40,9 +40,18 @@ public class HumanoidPawn : Pawn
         //limit max distance of move vector to 1, level the playing field for joysticks
         moveDirection = moveDirection.normalized;
 
-        //Convert the moveDirection from local space to world space
-        moveDirection = transform.InverseTransformDirection(moveDirection);
-        
+        //if statement for sprint function
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //Convert the moveDirection from local space to world space then multiply by sprint boost
+            moveDirection = transform.InverseTransformDirection(moveDirection) * sprintBoost;
+        }
+        else
+        {
+            //Convert the moveDirection from local space to world space
+            moveDirection = transform.InverseTransformDirection(moveDirection);
+        }
+
         //sets animation parameters based on the move direction datat
         _anim.SetFloat("Forward", moveDirection.z * speed);
         _anim.SetFloat("Right", moveDirection.x * speed);

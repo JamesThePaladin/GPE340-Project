@@ -21,6 +21,13 @@ public class HumanoidPawn : Pawn
 
     public override void Move(Vector3 moveDirection)
     {
+        //limit max distance of move vector to 1, level the playing field for joysticks
+        moveDirection = moveDirection.normalized;
+
+        //Convert the moveDirection from local space to world space
+        moveDirection = transform.InverseTransformDirection(moveDirection);
+        
+        //sets animation parameters based on the move direction datat
         _anim.SetFloat("Forward", moveDirection.z * speed);
         _anim.SetFloat("Right", moveDirection.x * speed);
         base.Move(moveDirection);

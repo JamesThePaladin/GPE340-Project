@@ -571,9 +571,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 547153184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e49615785bb28488a950ceca63c727, type: 3}
+  m_Script: {fileID: 11500000, guid: f1cc78db420979c418d25511d0aa3053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _anim: {fileID: 547153185}
+  speed: 1
 --- !u!114 &547153187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,11 +585,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 547153184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c76369cee6f3a468512861ab2252b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f1a42f4b897a804db2581ed9825c7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 547153186}
-  speed: 4
 --- !u!54 &547153188
 Rigidbody:
   m_ObjectHideFlags: 0

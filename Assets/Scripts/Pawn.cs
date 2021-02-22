@@ -5,5 +5,19 @@ using UnityEngine.U2D;
 
 public class Pawn : MonoBehaviour
 {
-    Pawn pawn;
+
+    public virtual void Start() 
+    {
+
+    }
+
+    public virtual void Update() 
+    {
+        
+    }
+
+    public virtual void Move(Vector3 moveDirection) 
+    {
+        
+    }
 }

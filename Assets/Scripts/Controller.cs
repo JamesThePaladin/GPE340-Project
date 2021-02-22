@@ -5,4 +5,14 @@ using UnityEngine;
 public abstract class Controller : MonoBehaviour
 {
     public Pawn pawn;
+
+    public virtual void Start() 
+    {
+        
+    }
+
+    public virtual void Update() 
+    {
+
+    }
 }

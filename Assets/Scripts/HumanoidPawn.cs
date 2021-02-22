@@ -7,7 +7,7 @@ public class HumanoidPawn : Pawn
 {
     [SerializeField] private Animator _anim; //animator on player pawn
     private Camera mainCam; //main camera for aiming with mouse
-    private float sprintBoost = 1.5f; //for player sprint boost
+    [SerializeField] private float sprintBoost = 1.5f; //for player sprint boost
     public float speed = 1f; //player pawn movement speed
 
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class HumanoidPawn : Pawn
     // Update is called once per frame
     public override void Update()
     {
+        //make a raycast from screen to mouse position
         Ray camRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -41,7 +42,7 @@ public class HumanoidPawn : Pawn
         moveDirection = moveDirection.normalized;
 
         //if statement for sprint function
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             //Convert the moveDirection from local space to world space then multiply by sprint boost
             moveDirection = transform.InverseTransformDirection(moveDirection) * sprintBoost;

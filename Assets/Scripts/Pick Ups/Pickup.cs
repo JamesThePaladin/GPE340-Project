@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickUp : MonoBehaviour
+public abstract class Pickup : MonoBehaviour
 {
     protected Vector3 axis = Vector3.up;
     protected float rotationSpeed = 90f;
     // Start is called before the first frame update
 
-    protected virtual void Awake() 
+    protected virtual void Awake()
     {
         Destroy(gameObject, 15f);
     }
 
     protected virtual void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,13 +27,13 @@ public abstract class PickUp : MonoBehaviour
     protected void OnTriggerEnter(Collider collider)
     {
         HumanoidPawn entity = collider.GetComponent<HumanoidPawn>();
-        if (entity) 
+        if (entity)
         {
             OnPickUp(entity);
         }
     }
 
-    protected void OnPickUp(HumanoidPawn entity) 
+    protected virtual void OnPickUp(HumanoidPawn entity)
     {
         Destroy(gameObject);
     }

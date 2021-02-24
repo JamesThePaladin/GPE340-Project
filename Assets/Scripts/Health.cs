@@ -5,5 +5,5 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private static float maxHealth = 100f;
-    private float health = maxHealth;
+    [SerializeField]private float health = maxHealth;
 }

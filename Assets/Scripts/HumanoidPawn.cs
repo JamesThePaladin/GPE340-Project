@@ -8,19 +8,18 @@ public class HumanoidPawn : Pawn
     [Header("Components")]
     [SerializeField] 
     private Animator _anim; //animator on player pawn
-    private Camera mainCam; //main camera for aiming with mouse
+    
 
     [Header("Movement Settings")]
-    [SerializeField, Range(0f, 3f)] 
+    [SerializeField, Range(0f, 3f), Tooltip("The amount the speed is multiplied by when the player is sprinting.")] 
     private float sprintBoost = 1.5f; //for player sprint boost
-    [SerializeField, Range(0f, 5f)] 
+    [SerializeField, Range(0f, 5f), Tooltip("The speed the player moves in feet/second")] 
     private float speed = 1f; //player pawn movement speed
 
     // Start is called before the first frame update
     public override void Start()
     {
         _anim.GetComponent<Animator>();
-        mainCam = FindObjectOfType<Camera>();
     }
 
     // Update is called once per frame

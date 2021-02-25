@@ -53,7 +53,7 @@ public class HumanoidPawn : Pawn
 
     public void OnAnimatorIK(int layerIndex)
     {
-        // TODO: Add if has weapon check and hands check
+        // TODO: Add if has weapon check and hands check this code is dangerous without it.
 
         // set IK goal positions and rotations
         _anim.SetIKPosition(AvatarIKGoal.LeftHand, weapon.leftHandPoint.position);

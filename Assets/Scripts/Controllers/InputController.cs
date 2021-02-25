@@ -32,6 +32,16 @@ public class InputController : Controller
             pawn.transform.LookAt(new Vector3(pointToLook.x, pawn.transform.position.y, pointToLook.z));
         }
 
+        if (Input.GetButtonDown("Fire1")) 
+        {
+            pawn.weapon.AttackStart();
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            pawn.weapon.AttackEnd();
+        }
+
         pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
         base.Update();
     }

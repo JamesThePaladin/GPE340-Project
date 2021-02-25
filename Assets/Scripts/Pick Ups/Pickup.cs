@@ -8,12 +8,12 @@ public abstract class Pickup : MonoBehaviour
     protected float rotationSpeed = 90f;
     // Start is called before the first frame update
 
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         Destroy(gameObject, 15f);
     }
 
-    protected virtual void Start()
+    public virtual void Start()
     {
 
     }

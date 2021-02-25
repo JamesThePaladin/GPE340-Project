@@ -50,4 +50,20 @@ public class HumanoidPawn : Pawn
         _anim.SetFloat("Right", moveDirection.x * speed);
         base.Move(moveDirection);
     }
+
+    public void OnAnimatorIK(int layerIndex)
+    {
+        // TODO: Add if has weapon check and hands check
+
+        // set IK goal positions and rotations
+        _anim.SetIKPosition(AvatarIKGoal.LeftHand, weapon.leftHandPoint.position);
+        _anim.SetIKRotation(AvatarIKGoal.LeftHand, weapon.leftHandPoint.rotation);
+        _anim.SetIKPosition(AvatarIKGoal.RightHand, weapon.rightHandPoint.position);
+        _anim.SetIKRotation(AvatarIKGoal.RightHand, weapon.rightHandPoint.rotation);
+
+        _anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+        _anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+        _anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+        _anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+    }   
 }

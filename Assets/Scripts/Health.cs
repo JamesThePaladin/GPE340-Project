@@ -12,11 +12,11 @@ public class Health : MonoBehaviour
     private float health = 100f;
 
     [Header("Events")]
-    [SerializeField, Tooltip("Raised every time the object is healed.")]
+    [SerializeField, Tooltip("Called every time the object is healed.")]
     private UnityEvent onHeal;
-    [SerializeField, Tooltip("Raised every time the object is damaged.")]
+    [SerializeField, Tooltip("Called every time the object is damaged.")]
     private UnityEvent onDamage;
-    [SerializeField, Tooltip("Raised once when the object's health reaches 0.")]
+    [SerializeField, Tooltip("Called once when the object's health reaches 0.")]
     private UnityEvent onDeath;
 
     public float GetHealth() 
@@ -39,15 +39,12 @@ public class Health : MonoBehaviour
         MaxHealth = value;
     }
 
-    public void Heal(int heal) 
+    public void Heal(float heal) 
     {
-        health += heal;
+        heal = Mathf.Max(heal, 0f);
+        health = Mathf.Clamp(health + heal, 0f, MaxHealth);
+        SendMessage("onHeal", SendMessageOptions.DontRequireReceiver);
         onHeal.Invoke();
-
-        if (health >= MaxHealth) 
-        {
-            health = MaxHealth;
-        }
     }
 
     public void FullHeal() 
@@ -55,14 +52,16 @@ public class Health : MonoBehaviour
         health = MaxHealth;
     }
 
-    public void Damage(int damage) 
+    public void Damage(float damage) 
     {
-        health -= damage;
+        damage = Mathf.Max(damage, 0f);
+        health = Mathf.Clamp(health - damage, 0f, MaxHealth);
+        SendMessage("onDamage", SendMessageOptions.DontRequireReceiver);
         onDamage.Invoke();
-
-        if (health <= 0) 
+        if (health <= 0f) 
         {
-            health = 0;
+            SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
+            onDeath.Invoke();
         }
     }
 

@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class InputController : Controller
 {
+    [Header("Components")]
     private Camera mainCam; //main camera for aiming with mouse
-
+    [Header("Pawn Movement Settings")]
+    [SerializeField, Range(0f, 3f), Tooltip("The amount the speed is multiplied by when the player is sprinting.")]
+    private float sprintBoost = 1.5f; //for player sprint boost
     // Start is called before the first frame update
     public override void Start()
     {

@@ -28,12 +28,23 @@ public class WeaponPickup : Pickup
 
     protected override void OnPickUp(HumanoidPawn entity)
     {
-        GameObject parentObject = GameObject.FindGameObjectWithTag("PlayerWeaponSpawn");
-        Transform weaponSpawn = parentObject.GetComponent<Transform>();
         int prefabIndex = Random.Range(0, 3); // choose a random weapon to spawn
-        GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
-        Weapon playerWeapon = Weapon.GetComponent<Weapon>();
-        entity.weapon = playerWeapon;
+        if (prefabIndex == 0)
+        {
+            GameObject parentObject = GameObject.Find("SingleHandGunSpawnPoint");
+            Transform weaponSpawn = parentObject.GetComponent<Transform>();
+            GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+            entity.weapon = playerWeapon;
+        }
+        else 
+        {
+            GameObject parentObject = GameObject.Find("TwoHandedGunSpawnPoint");
+            Transform weaponSpawn = parentObject.GetComponent<Transform>();
+            GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+            entity.weapon = playerWeapon;
+        }
         base.OnPickUp(entity);
     }
 }

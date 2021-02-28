@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponRifle : WeaponGun
+public class WeaponShotgun : WeaponGun
 {
-
+    [SerializeField, Tooltip("Amount of bullets fired with each trigger pull.")]
+    protected float projectileCount;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -27,5 +28,11 @@ public class WeaponRifle : WeaponGun
     {
         base.AttackEnd();
     }
-
+    public override void ShootBullet()
+    {
+        for (int i = 0; i < projectileCount; i++)
+        {
+            base.ShootBullet();
+        }
+    }
 }

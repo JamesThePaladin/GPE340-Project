@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  owner: {fileID: 0}
   rightHandPoint: {fileID: 1975822739394769722}
   leftHandPoint: {fileID: 1975822738839531648}
   RightElbowPoint: {fileID: 1770497983594294084}
@@ -185,8 +186,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.3
   firingPoint: {fileID: 3111448077095474227}
+  spread: 8
 --- !u!1 &7419107360340858741
 GameObject:
   m_ObjectHideFlags: 0

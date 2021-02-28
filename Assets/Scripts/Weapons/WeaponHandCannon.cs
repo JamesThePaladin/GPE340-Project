@@ -25,5 +25,10 @@ public class WeaponHandCannon : WeaponGun
     {
         base.AttackEnd();
     }
+
+    public override void ShootBullet() 
+    {
+        base.ShootBullet();
+    }
 }
 

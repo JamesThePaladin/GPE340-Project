@@ -12,6 +12,8 @@ public class WeaponGun : Weapon
     public float timeBetweenShots;
     protected float nextShootTime;
     public Transform firingPoint;
+    [SerializeField,Range(0, 20),Tooltip("This controls the bullet spread of the gun.")]
+    protected float spread;
     
 
     // Start is called before the first frame update
@@ -38,13 +40,15 @@ public class WeaponGun : Weapon
         base.AttackEnd();
     }
 
-    public void ShootBullet()
+    public virtual void ShootBullet()
     {
         if (Time.time >= nextShootTime)
         {
             //Instantiate a bullet, have the bullet code do the rest
-            GameObject playerBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
+            GameObject playerBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation * Quaternion.Euler(Random.onUnitSphere * spread));
+            playerBullet.gameObject.layer = gameObject.layer;
             Bullet playerBulletScript = playerBullet.GetComponent<Bullet>();
+            playerBulletScript.owner = owner;
             // TODO: Send all appropriate data to bullet
             playerBulletScript.damageDone = damage;
             //delay our next shot

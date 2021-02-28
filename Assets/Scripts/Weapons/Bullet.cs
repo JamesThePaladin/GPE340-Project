@@ -5,12 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [Header("Components")]
-    public GameObject owner;
+    public HumanoidPawn owner;
     private Rigidbody rb;
     [Header("Bullet Settings")]
     public float fireSpeed;
     public float damageDone;
     public float lifespan = 1.5f;
+
 
     // Start is called before the first frame update
     void Start()

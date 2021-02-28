@@ -34,6 +34,11 @@ public class WeaponMachineGun : WeaponGun
         base.AttackEnd();
     }
 
+    public override void ShootBullet()
+    {
+        base.ShootBullet();
+    }
+
     public void StartFullAuto()
     {
         _isShootingFullAuto = true;

@@ -69,9 +69,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6080384392266256425}
-  - component: {fileID: -4078799819703107884}
+  - component: {fileID: 8869309811841603514}
   m_Layer: 0
-  m_Name: Rifle
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4078799819703107884
+--- !u!114 &8869309811841603514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,18 +105,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630361220137423573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce03a893aedec1b439017b9fc3d65306, type: 3}
+  m_Script: {fileID: 11500000, guid: e9feeb2d191b5e44a89fc55b71e6a76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 5
+  owner: {fileID: 0}
   rightHandPoint: {fileID: 430002435009087532}
   leftHandPoint: {fileID: 4479659414809585020}
   RightElbowPoint: {fileID: 3765052531327561011}
   OnAttackStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -4078799819703107884}
-        m_TargetAssemblyTypeName: WeaponGun, Assembly-CSharp
+      - m_Target: {fileID: 8869309811841603514}
+        m_TargetAssemblyTypeName: WeaponShotgun, Assembly-CSharp
         m_MethodName: ShootBullet
         m_Mode: 1
         m_Arguments:
@@ -131,8 +132,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
-  timeBetweenShots: 4
+  timeBetweenShots: 2
   firingPoint: {fileID: 9193301500647312077}
+  spread: 10
+  projectileCount: 10
 --- !u!1 &3909699464933986749
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,31 +166,6 @@ Transform:
   m_Father: {fileID: 6080384392266256425}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -112.889}
---- !u!114 &4487652066742453253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5168675414777319832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce03a893aedec1b439017b9fc3d65306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  rightHandPoint: {fileID: 430002435009087532}
-  leftHandPoint: {fileID: 4479659414809585020}
-  RightElbowPoint: {fileID: 0}
-  OnAttackStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  bulletPrefab: {fileID: 0}
-  timeBetweenShots: 0
-  firingPoint: {fileID: 0}
 --- !u!1 &7434291243532141157
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,11 +253,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df804c49be2c3cf4a90d773eb9565e13, type: 3}
---- !u!1 &5168675414777319832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 108886, guid: df804c49be2c3cf4a90d773eb9565e13, type: 3}
-  m_PrefabInstance: {fileID: 5168675414777362638}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5168675414777739636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 410042, guid: df804c49be2c3cf4a90d773eb9565e13, type: 3}

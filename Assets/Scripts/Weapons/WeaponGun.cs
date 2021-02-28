@@ -10,9 +10,9 @@ public class WeaponGun : Weapon
 
     [Header("Firing Settings")]
     public float timeBetweenShots;
-    public Transform firingPoint;
-
     protected float nextShootTime;
+    public Transform firingPoint;
+    
 
     // Start is called before the first frame update
     public override void Start()

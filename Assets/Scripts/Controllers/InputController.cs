@@ -8,9 +8,7 @@ public class InputController : Controller
 {
     [Header("Components")]
     private Camera mainCam; //main camera for aiming with mouse
-    [Header("Pawn Movement Settings")]
-    [SerializeField, Range(0f, 3f), Tooltip("The amount the speed is multiplied by when the player is sprinting.")]
-    private float sprintBoost = 1.5f; //for player sprint boost
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -36,7 +34,7 @@ public class InputController : Controller
             pawn.transform.LookAt(new Vector3(pointToLook.x, pawn.transform.position.y, pointToLook.z));
         }
         //if statement for sprint function
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Debug.Log("I'm sprinting!");
             //Convert the moveDirection from local space to world space then multiply by sprint boost

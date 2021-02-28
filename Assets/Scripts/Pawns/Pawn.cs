@@ -5,6 +5,9 @@ using UnityEngine.U2D;
 
 public class Pawn : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField]
+    protected Animator _anim; //animator on player pawn
     [Header("Weapon Settings"), Tooltip("The weapon an actor currently has equipped.")]
     public Weapon weapon;
     [Header("Movement Settings")]

@@ -27,9 +27,12 @@ public abstract class Pickup : MonoBehaviour
 
     protected void OnTriggerEnter(Collider collider)
     {
+        //check to see if what collided with pickup is a HumanoidPawn
         HumanoidPawn entity = collider.GetComponent<HumanoidPawn>();
+        //if it is
         if (entity)
         {
+            //call on pickup
             OnPickUp(entity);
         }
     }

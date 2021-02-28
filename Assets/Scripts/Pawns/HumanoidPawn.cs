@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class HumanoidPawn : Pawn
 {
-    [Header("Components")]
-    [SerializeField] 
-    private Animator _anim; //animator on player pawn
-    
-    [Header("Movement Settings")]
     [SerializeField, Range(0f, 5f), Tooltip("The speed the player moves in feet/second")] 
     private float speed = 1f; //player pawn movement speed
 

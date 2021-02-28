@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponRifle : WeaponGun
+public class WeaponMachineGun : WeaponGun
 {
+    private bool _isShootingFullAuto;
 
     // Start is called before the first frame update
     public override void Start()
@@ -15,6 +16,11 @@ public class WeaponRifle : WeaponGun
     // Update is called once per frame
     public override void Update()
     {
+        if (_isShootingFullAuto)
+        {
+            ShootBullet();
+        }
+
         base.Update();
     }
 
@@ -28,4 +34,13 @@ public class WeaponRifle : WeaponGun
         base.AttackEnd();
     }
 
+    public void StartFullAuto()
+    {
+        _isShootingFullAuto = true;
+    }
+
+    public void StopFullAuto()
+    {
+        _isShootingFullAuto = false;
+    }
 }

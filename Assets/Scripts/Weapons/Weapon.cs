@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [Header("Weapon Settings")]
+    public float damage;
     [Header("IK Points")]
     public Transform rightHandPoint;
     public Transform leftHandPoint;

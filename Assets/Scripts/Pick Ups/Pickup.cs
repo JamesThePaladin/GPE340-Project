@@ -21,6 +21,7 @@ public abstract class Pickup : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        //rotate the pickup as it sits on the ground
         transform.rotation *= Quaternion.AngleAxis(rotationSpeed * Time.deltaTime, axis);
     }
 

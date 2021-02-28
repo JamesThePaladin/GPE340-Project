@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class WeaponRifle : WeaponGun
+public class WeaponHandCannon : WeaponGun
 {
-
     // Start is called before the first frame update
     public override void Start()
     {
@@ -27,5 +25,5 @@ public class WeaponRifle : WeaponGun
     {
         base.AttackEnd();
     }
-
 }
+

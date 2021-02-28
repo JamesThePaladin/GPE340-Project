@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
         heal = Mathf.Max(heal, 0f);
         health = Mathf.Clamp(health + heal, 0f, MaxHealth);
         SendMessage("onHeal", SendMessageOptions.DontRequireReceiver);
-        onHeal.Invoke();
+        //onHeal.Invoke();
     }
 
     public void FullHeal() 
@@ -57,17 +57,17 @@ public class Health : MonoBehaviour
         damage = Mathf.Max(damage, 0f);
         health = Mathf.Clamp(health - damage, 0f, MaxHealth);
         SendMessage("onDamage", SendMessageOptions.DontRequireReceiver);
-        onDamage.Invoke();
+        //onDamage.Invoke();
         if (health <= 0f) 
         {
-            SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
-            onDeath.Invoke();
+           SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
+           //onDeath.Invoke();
         }
     }
 
     public void Kill() 
     {
         health = 0;
-        onDeath.Invoke();
+        //onDeath.Invoke();
     }
 }

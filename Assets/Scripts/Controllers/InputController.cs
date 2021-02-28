@@ -46,14 +46,17 @@ public class InputController : Controller
             pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
         }
 
-        if (Input.GetButtonDown("Fire1")) 
+        if (pawn.weapon != null)
         {
-            pawn.weapon.AttackStart();
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                pawn.weapon.AttackStart();
+            }
 
-        if (Input.GetButtonUp("Fire1"))
-        {
-            pawn.weapon.AttackEnd();
+            if (Input.GetButtonUp("Fire1"))
+            {
+                pawn.weapon.AttackEnd();
+            } 
         }
 
         pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));

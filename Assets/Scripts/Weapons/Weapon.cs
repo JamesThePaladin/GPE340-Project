@@ -39,4 +39,9 @@ public abstract class Weapon : MonoBehaviour
         // TODO: This is what happens when any attack ends
         OnAttackEnd.Invoke();
     }
+
+    public void SetDamage(float value) 
+    {
+        damage = value;
+    }
 }

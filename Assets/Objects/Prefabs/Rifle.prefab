@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce03a893aedec1b439017b9fc3d65306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   rightHandPoint: {fileID: 430002435009087532}
   leftHandPoint: {fileID: 4479659414809585020}
   RightElbowPoint: {fileID: 3765052531327561011}
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
-  timeBetweenShots: 1
+  timeBetweenShots: 4
   firingPoint: {fileID: 9193301500647312077}
 --- !u!1 &3909699464933986749
 GameObject:

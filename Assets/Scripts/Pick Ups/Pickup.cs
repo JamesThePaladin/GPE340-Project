@@ -4,15 +4,16 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
 {
+    // variables for pick up rotation
     protected Vector3 axis = Vector3.up;
     protected float rotationSpeed = 90f;
-    // Start is called before the first frame update
-
+    
     public virtual void Awake()
     {
         Destroy(gameObject, 15f);
     }
 
+    // Start is called before the first frame update
     public virtual void Start()
     {
 

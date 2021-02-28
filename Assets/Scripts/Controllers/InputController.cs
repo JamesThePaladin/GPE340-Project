@@ -58,8 +58,6 @@ public class InputController : Controller
                 pawn.weapon.AttackEnd();
             } 
         }
-
-        pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
         base.Update();
     }
 }

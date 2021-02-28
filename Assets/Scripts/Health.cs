@@ -61,13 +61,14 @@ public class Health : MonoBehaviour
         if (health <= 0f) 
         {
            SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
-           //onDeath.Invoke();
+           onDeath.Invoke();
         }
     }
 
     public void Kill() 
     {
         health = 0;
+        Destroy(gameObject);
         //onDeath.Invoke();
     }
 }

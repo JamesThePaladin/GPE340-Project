@@ -12,6 +12,11 @@ public class WeaponPickup : Pickup
     private GameObject riflePrefab;
     private List<GameObject> weapons = new List<GameObject>();
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -29,36 +34,40 @@ public class WeaponPickup : Pickup
 
     protected override void OnPickUp(HumanoidPawn entity)
     {
-        // choose a random weapon to spawn
-        int prefabIndex = Random.Range(0, 3); 
-        //if the index number is equal to 0, or the hand cannon
-        if (prefabIndex == 0)
+        if (entity.weapon == null)
         {
-            //find the appropriate spawn point on the entity
-            GameObject parentObject = GameObject.Find("SingleHandGunSpawnPoint");
-            //get the transform
-            Transform weaponSpawn = parentObject.GetComponent<Transform>();
-            //name it weapon and spawn it at that points position, rotation, and as a child of it
-            GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
-            //get the weapon component of Weapon Object
-            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
-            //make it the entity's weapon
-            entity.weapon = playerWeapon;
+            // choose a random weapon to spawn
+            int prefabIndex = Random.Range(0, 3);
+            //if the index number is equal to 0, or the hand cannon
+            if (prefabIndex == 0)
+            {
+                //find the appropriate spawn point on the entity
+                GameObject parentObject = GameObject.Find("SingleHandGunSpawnPoint");
+                //get the transform
+                Transform weaponSpawn = parentObject.GetComponent<Transform>();
+                //name it weapon and spawn it at that points position, rotation, and as a child of it
+                GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+                //get the weapon component of Weapon Object
+                Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+                //make it the entity's weapon
+                entity.weapon = playerWeapon;
+            }
+            //else, it is the rifle or machine gun
+            else
+            {
+                //find the appropriate spawn point on the entity
+                GameObject parentObject = GameObject.Find("TwoHandedGunSpawnPoint");
+                //get the transform
+                Transform weaponSpawn = parentObject.GetComponent<Transform>();
+                //name it weapon and spawn it at that points position, rotation, and as a child of it
+                GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+                //get the weapon component of Weapon Object
+                Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+                //make it the entity's weapon
+                entity.weapon = playerWeapon;
+            }
+            //destroy object
+            base.OnPickUp(entity);
         }
-        //else, it is the rifle or machine gun
-        else 
-        {
-            //find the appropriate spawn point on the entity
-            GameObject parentObject = GameObject.Find("TwoHandedGunSpawnPoint");
-            //get the transform
-            Transform weaponSpawn = parentObject.GetComponent<Transform>();
-            //name it weapon and spawn it at that points position, rotation, and as a child of it
-            GameObject Weapon = Instantiate(weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
-            //get the weapon component of Weapon Object
-            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
-            //make it the entity's weapon
-            entity.weapon = playerWeapon;
-        }
-        base.OnPickUp(entity);
     }
 }

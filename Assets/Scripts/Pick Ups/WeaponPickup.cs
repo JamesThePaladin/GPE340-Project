@@ -24,12 +24,13 @@ public class WeaponPickup : Pickup
         weapons.Add(handCannonPrefab);
         weapons.Add(machineGunPrefab);
         weapons.Add(shotGunPrefab);
+        base.Start();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        
+        base.Update();
     }
 
     protected override void OnPickUp(HumanoidPawn entity)
@@ -37,7 +38,7 @@ public class WeaponPickup : Pickup
         if (entity.weapon == null)
         {
             // choose a random weapon to spawn
-            int prefabIndex = Random.Range(0, 3);
+            int prefabIndex = Random.Range(0, 2);
             //if the index number is equal to 0, or the hand cannon
             if (prefabIndex == 0)
             {

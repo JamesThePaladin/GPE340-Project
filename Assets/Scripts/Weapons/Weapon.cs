@@ -8,7 +8,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Weapon Settings")]
     public float damage;
     [SerializeField, Tooltip("The actor owner of this weapon.")]
-    protected HumanoidPawn owner;
+    protected Pawn owner;
     [Header("IK Points")]
     public Transform rightHandPoint;
     public Transform leftHandPoint;
@@ -18,9 +18,9 @@ public abstract class Weapon : MonoBehaviour
     public UnityEvent OnAttackStart;
     public UnityEvent OnAttackEnd;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        owner = gameObject.GetComponentInParent<HumanoidPawn>();
+        owner = gameObject.GetComponentInParent<Pawn>();
     }
     // Start is called before the first frame update
     public virtual void Start()

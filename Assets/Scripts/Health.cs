@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     private float MaxHealth = 100f;
     [SerializeField]
     private float health = 100f;
+    private float percent;
 
     [Header("Events")]
     [SerializeField, Tooltip("Called every time the object is healed.")]
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
     private UnityEvent onDamage;
     [SerializeField, Tooltip("Called once when the object's health reaches 0.")]
     private UnityEvent onDeath;
+
 
     public float GetHealth() 
     {
@@ -39,12 +41,22 @@ public class Health : MonoBehaviour
         MaxHealth = value;
     }
 
+    public float GetPercent() 
+    {
+        percent = health / MaxHealth;
+        return percent;
+    }
+
+    private void SetPercent() 
+    {
+        percent = health / MaxHealth;
+    }
+
     public void Heal(float heal) 
     {
         heal = Mathf.Max(heal, 0f);
         health = Mathf.Clamp(health + heal, 0f, MaxHealth);
         SendMessage("onHeal", SendMessageOptions.DontRequireReceiver);
-        //onHeal.Invoke();
     }
 
     public void FullHeal() 
@@ -57,11 +69,10 @@ public class Health : MonoBehaviour
         damage = Mathf.Max(damage, 0f);
         health = Mathf.Clamp(health - damage, 0f, MaxHealth);
         SendMessage("onDamage", SendMessageOptions.DontRequireReceiver);
-        //onDamage.Invoke();
         if (health <= 0f) 
         {
            SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
-           onDeath.Invoke();
+            onDeath.Invoke();
         }
     }
 
@@ -69,6 +80,5 @@ public class Health : MonoBehaviour
     {
         health = 0;
         Destroy(gameObject);
-        //onDeath.Invoke();
     }
 }

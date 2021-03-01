@@ -8,10 +8,15 @@ public class HumanoidPawn : Pawn
     [SerializeField, Range(0f, 5f), Tooltip("The speed the player moves in feet/second")] 
     private float speed = 1f; //player pawn movement speed
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {
-        _anim.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -24,8 +29,21 @@ public class HumanoidPawn : Pawn
     {
         //limit max distance of move vector to 1, level the playing field for joysticks
         moveDirection = moveDirection.normalized;
+        
         //Convert the moveDirection from local space to world space
-        moveDirection = transform.InverseTransformDirection(moveDirection);
+        //moveDirection = transform.InverseTransformDirection(moveDirection);
+        
+        //if left shift is held down
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //multiply our direction by our sprint boost so we run faster
+            moveDirection = transform.InverseTransformDirection(moveDirection * sprintBoost);
+        }
+        else 
+        {
+            //if its not just move at normal speed
+            moveDirection = transform.InverseTransformDirection(moveDirection);
+        }
         
         //sets animation parameters based on the move direction datat
         _anim.SetFloat("Forward", moveDirection.z * speed);

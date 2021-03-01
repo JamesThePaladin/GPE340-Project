@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6852392859393096352}
   - component: {fileID: 9106606204813367605}
+  - component: {fileID: 3443849837223256337}
   m_Layer: 0
   m_Name: HandCannonPickup
   m_TagString: Untagged
@@ -44,7 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c710c4097599344da167970e618390e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 90
+  lifespan: 15
+  canDecay: 1
   handCannonPrefab: {fileID: 1506534465935502969, guid: 9aa5647443e574f48ab65b5a9c4a1973, type: 3}
+--- !u!136 &3443849837223256337
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424792082959386124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3870616
+  m_Height: 1.4506006
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.112938434, z: 0.063524246}
 --- !u!1001 &5494675712984681457
 PrefabInstance:
   m_ObjectHideFlags: 0

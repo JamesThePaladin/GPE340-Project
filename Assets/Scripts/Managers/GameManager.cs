@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
     public int maxPickups = 10;
     //delay in between pickup spawns
     public float pickupSpawnDelay = 4f;
+    [Header("Player Data")]
+    public GameObject playerPawn;
+    public Health Health;
+    public Text healthText;
     private void Awake()
     {
         // if instance is empty
@@ -57,17 +62,24 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerPawn = GameObject.FindGameObjectWithTag("Player");
+        Health = playerPawn.GetComponent<Health>();
+        healthText = GameObject.FindGameObjectWithTag("Health Text").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        healthText.text = string.Format("Health: {0}%", Mathf.RoundToInt(Health.GetPercent() * 100f));
+        //for each enemy in the enemies list
         foreach (GameObject enemy in enemies.ToList()) 
         {
+            //if it is null
             if (enemy == null) 
             {
+                //remove it from the list
                 enemies.Remove(enemy);
+                //and decrement current enemies
                 currentEnemies--;
             }
         }

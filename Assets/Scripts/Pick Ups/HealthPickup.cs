@@ -15,7 +15,7 @@ public class HealthPickup : Pickup
 
     public override void Start()
     {
-        base.Update();
+        base.Start();
     }
 
     // Update is called once per frame

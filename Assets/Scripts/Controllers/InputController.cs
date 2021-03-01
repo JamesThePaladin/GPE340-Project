@@ -32,19 +32,23 @@ public class InputController : Controller
             Debug.DrawLine(camRay.origin, pointToLook, UnityEngine.Color.blue);
             //look at the point
             pawn.transform.LookAt(new Vector3(pointToLook.x, pawn.transform.position.y, pointToLook.z));
+       
         }
         //if statement for sprint function
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Debug.Log("I'm sprinting!");
-            //Convert the moveDirection from local space to world space then multiply by sprint boost
-            pawn.Move(new Vector3(Input.GetAxis("Horizontal") * pawn.sprintBoost, 0f, Input.GetAxis("Vertical") * pawn.sprintBoost));
-        }
-        else
-        {
-            //Convert the moveDirection from local space to world space
-            pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
-        }
+        //if (Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    Debug.Log("I'm sprinting!");
+        //    //Convert the moveDirection from local space to world space then multiply by sprint boost
+        //    pawn.Move(new Vector3(Input.GetAxis("Horizontal") * pawn.sprintBoost, 0f, Input.GetAxis("Vertical") * pawn.sprintBoost));
+        //}
+        //else
+        //{
+        //    //Convert the moveDirection from local space to world space
+        //    pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
+        //}
+       
+        //Convert the moveDirection from local space to world space
+        pawn.Move(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")));
 
         if (pawn.weapon != null)
         {

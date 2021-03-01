@@ -4,14 +4,20 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
 {
-    // variables for pick up rotation
-    protected Vector3 axis = Vector3.up;
-    protected float rotationSpeed = 90f;
-    protected float lifespan = 15f;
-    
+    [Header("Pickup Settings")]
+    protected Vector3 axis = Vector3.up; //the axis the object will rotate on
+    [SerializeField, Tooltip("This is the speed at which the pickup rotates")]
+    protected float rotationSpeed = 90f; // variable for pick up rotation
+    [SerializeField, Tooltip("This is how long the pickup remains in the scene before destroying itself")]
+    protected float lifespan = 15f; //amount of time the pickup remains until it is destroyed
+    [SerializeField, Tooltip("If this boolean is true the pickup will decay after it's designer set lifepsan. If it is false then the pickup will not decay.")]
+    protected bool canDecay = true; //boolean for allowing a pickup to not decay
     public virtual void Awake()
     {
-        StartCoroutine(Decay());
+        if (canDecay == true)
+        {
+            StartCoroutine(Decay()); 
+        }
     }
 
     // Start is called before the first frame update

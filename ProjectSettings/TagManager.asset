@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerWeaponSpawn
+  - HealthText
   layers:
   - Default
   - TransparentFX

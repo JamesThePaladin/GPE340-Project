@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [Header("Components")]
-    public HumanoidPawn owner;
+    public Pawn owner;
     private Rigidbody rb;
     [Header("Bullet Settings")]
     public float fireSpeed;
@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour
         //get the object the bullet hit
         GameObject otherObject = other.gameObject;
         //if it has health, make the object take damage
+        //TODO: Add some sort of checking here to check if object has a health component.
         Health otherHealth = otherObject.GetComponent<Health>();
         if (otherObject != null)
         {

@@ -9,7 +9,7 @@ public class WeaponPickup : Pickup
     [SerializeField]
     private GameObject machineGunPrefab;
     [SerializeField]
-    private GameObject riflePrefab;
+    private GameObject shotGunPrefab;
     private List<GameObject> weapons = new List<GameObject>();
 
     public override void Awake()
@@ -23,7 +23,7 @@ public class WeaponPickup : Pickup
         //add all the prefabs to the weapons list
         weapons.Add(handCannonPrefab);
         weapons.Add(machineGunPrefab);
-        weapons.Add(riflePrefab);
+        weapons.Add(shotGunPrefab);
     }
 
     // Update is called once per frame

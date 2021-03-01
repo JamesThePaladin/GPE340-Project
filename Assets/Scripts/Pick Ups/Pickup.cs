@@ -7,10 +7,11 @@ public abstract class Pickup : MonoBehaviour
     // variables for pick up rotation
     protected Vector3 axis = Vector3.up;
     protected float rotationSpeed = 90f;
+    protected float lifespan = 15f;
     
     public virtual void Awake()
     {
-        Destroy(gameObject, 15f);
+        StartCoroutine(Decay());
     }
 
     // Start is called before the first frame update
@@ -40,6 +41,15 @@ public abstract class Pickup : MonoBehaviour
 
     protected virtual void OnPickUp(HumanoidPawn entity)
     {
+        GameManager.instance.pickups.Remove(gameObject);
+        GameManager.instance.currentPickups--;
+        Destroy(gameObject);
+    }
+    IEnumerator Decay()
+    {
+        yield return new WaitForSeconds(lifespan);
+        GameManager.instance.pickups.Remove(gameObject);
+        GameManager.instance.currentPickups--;
         Destroy(gameObject);
     }
 

@@ -2,39 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Spawner
 {
-    [Header("Spawner Settings")]
-    private Transform tf; //variable to hold the spawner's transform component
-    [SerializeField, Tooltip("Time until the next enemy spawns.")]
-    private float nextSpawnTime; //variable to adjust time when the next enemy can spawn
-    [SerializeField, Tooltip("Toggle if the spawner is set to move or not.")]
-    private bool isMoving = false; //allows the spawn to randomly move
-    [SerializeField, Tooltip("Minimum x-axis value the spawner is allowed to move.")]
-    private float minX = 10f;
-    [SerializeField, Tooltip("Maximum x-axis value the spawner is allowed to move.")]
-    private float maxX = 10f;
-    [SerializeField, Tooltip("Minimum z-axis value the spawner is allowed to move.")]
-    private float minZ = 10f;
-    [SerializeField, Tooltip("Maximum z-axis value the spawner is allowed to move.")]
-    private float maxZ = 10f;
-    [SerializeField, Tooltip("Y value for the random spawner, this is value should remain positive and not randomized.")]
-    private float setY = 2f;
-
 
     // Start is called before the first frame update
-    void Awake()
+    protected override void Awake()
     {
-        tf = GetComponent<Transform>();
+        base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
         nextSpawnTime = Time.time + GameManager.instance.enemySpawnDelay;
         GameManager.instance.enemySpawners.Add(gameObject);
+        base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
         //if the number of current enemies is less than the number of max enemies
         if (GameManager.instance.currentEnemies < GameManager.instance.maxEnemies) 
@@ -57,17 +41,13 @@ public class EnemySpawner : MonoBehaviour
                 GameManager.instance.currentEnemies++;
             }
         }
-        if (isMoving) 
-        {
-            //randomly change position
-            float randomX = Random.Range(minX, maxX);
-            float randomZ = Random.Range(minZ, maxZ);
-            tf.position = new Vector3(randomX, setY, randomZ);
-        }
+
+        base.Update();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         GameManager.instance.enemySpawners.Remove(gameObject);
+        base.OnDestroy();
     }
 }

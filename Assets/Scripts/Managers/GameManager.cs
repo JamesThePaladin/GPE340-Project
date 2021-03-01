@@ -17,11 +17,25 @@ public class GameManager : MonoBehaviour
     public List<Transform> waypoints;
     [Header("Enemy Spawn Settings")]
     //int for currrent enemies on the map
-    public int currentEnemies;
+    public int currentEnemies = 0;
     //int for max enemies on the map
-    public int maxEnemies;
+    public int maxEnemies = 10;
     //spawn cooldown for enemy spawns
-    public float enemySpawnDelay;
+    public float enemySpawnDelay = 4f;
+    [Header("Pickup Lists")]
+    //list of pickups in the game
+    public List<GameObject> pickups;
+    //list of all pickup prefabs to spawn as pickups
+    public List<GameObject> pickupPrefabs;
+    //list of to hold pickup spawners
+    public List<GameObject> pickupSpawners;
+    [Header("Pickup Settings")]
+    //current amount of pickups in the game
+    public int currentPickups = 0;
+    //max amount of pickups in the game
+    public int maxPickups = 10;
+    //delay in between pickup spawns
+    public float pickupSpawnDelay = 4f;
     private void Awake()
     {
         // if instance is empty

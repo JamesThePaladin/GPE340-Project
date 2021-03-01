@@ -38,12 +38,6 @@ public class HumanoidPawn : Pawn
         //if we dont have a weapon
         if (!weapon) 
         {
-            //clear all weights
-            _anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 0f);
-            _anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 0f);
-            _anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0f);
-            _anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0f);
-            _anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 0f);
             return;
         }
         //if we have a weapon with right hand ik points

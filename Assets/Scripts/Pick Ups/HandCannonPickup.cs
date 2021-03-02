@@ -23,18 +23,16 @@ public class HandCannonPickup : Pickup
     }
     protected override void OnPickUp(HumanoidPawn entity)
     {
-        if (entity.weapon == null)
+        if (!entity.weapon)
         {
-            //find the appropriate spawn point on the entity
-            GameObject parentObject = GameObject.Find("SingleHandGunSpawnPoint");
-            //get the transform
-            Transform weaponSpawn = parentObject.GetComponent<Transform>();
+            //get the transform of the weapon spawn point on the asset
+            Transform weaponSpawn = entity.GetComponent<Transform>().GetChild(0);
             //name it weapon and spawn it at that points position, rotation, and as a child of it
             GameObject Weapon = Instantiate(handCannonPrefab, weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
             //get the weapon component of Weapon Object
-            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+            Weapon entityWeapon = Weapon.GetComponent<Weapon>();
             //make it the entity's weapon
-            entity.weapon = playerWeapon;
+            entity.weapon = entityWeapon;
             //destroy pickup through parent method
             base.OnPickUp(entity); 
         }

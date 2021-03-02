@@ -26,16 +26,14 @@ public class MachineGunPickup : Pickup
     {
         if (entity.weapon == null)
         {
-            //find the appropriate spawn point on the entity
-            GameObject parentObject = GameObject.Find("TwoHandedGunSpawnPoint");
-            //get the transform
-            Transform weaponSpawn = parentObject.GetComponent<Transform>();
+            //get the transform of the weapon spawn point on the asset
+            Transform weaponSpawn = entity.GetComponent<Transform>().GetChild(1);
             //name it weapon and spawn it at that points position, rotation, and as a child of it
             GameObject Weapon = Instantiate(machineGunPrefab, weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
             //get the weapon component of Weapon Object
-            Weapon playerWeapon = Weapon.GetComponent<Weapon>();
+            Weapon entityWeapon = Weapon.GetComponent<Weapon>();
             //make it the entity's weapon
-            entity.weapon = playerWeapon;
+            entity.weapon = entityWeapon;
             //destroy pickup through parent method
             base.OnPickUp(entity); 
         }

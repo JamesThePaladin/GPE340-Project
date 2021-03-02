@@ -28,9 +28,12 @@ public class HealthPickup : Pickup
     {
         //get the entity that we collided with's health component
         Health entityHealth = entity.GetComponent<Health>();
-        //pass the heal amount to their heal function
-        entityHealth.Heal(healAmount);
-        //destroy object
-        base.OnPickUp(entity);
+        if (entityHealth.GetHealth() < entityHealth.GetMaxHealth())
+        {
+            //pass the heal amount to their heal function
+            entityHealth.Heal(healAmount);
+            //destroy object
+            base.OnPickUp(entity); 
+        }
     }
 }

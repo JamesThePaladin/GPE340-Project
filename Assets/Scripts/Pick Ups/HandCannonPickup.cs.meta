@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 4c710c4097599344da167970e618390e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - handCannonPrefab: {fileID: 1506534465935502969, guid: 9aa5647443e574f48ab65b5a9c4a1973, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

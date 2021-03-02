@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         //if it has health, make the object take damage
         //TODO: Add some sort of checking here to check if object has a health component.
         Health otherHealth = otherObject.GetComponent<Health>();
-        if (otherObject != null)
+        if (otherHealth != null)
         {
             otherHealth.Damage(damageDone);
         }

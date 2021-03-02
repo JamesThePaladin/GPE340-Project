@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         playerPawn = GameObject.FindGameObjectWithTag("Player");
         Health = playerPawn.GetComponent<Health>();
-        healthText = GameObject.FindGameObjectWithTag("Health Text").GetComponent<Text>();
+        healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>();
     }
 
     // Update is called once per frame

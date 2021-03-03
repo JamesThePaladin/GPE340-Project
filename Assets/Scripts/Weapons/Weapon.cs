@@ -34,6 +34,11 @@ public abstract class Weapon : MonoBehaviour
         
     }
 
+    public virtual void FixedUpdate() 
+    {
+        
+    }
+
     public virtual void AttackStart() 
     {
         // TODO: This is what happens when any attack starts

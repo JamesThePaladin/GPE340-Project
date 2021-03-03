@@ -36,7 +36,6 @@ public class Bullet : MonoBehaviour
         //get the object the bullet hit
         GameObject otherObject = other.gameObject;
         //if it has health, make the object take damage
-        //TODO: Add some sort of checking here to check if object has a health component.
         Health otherHealth = otherObject.GetComponent<Health>();
         if (otherHealth != null)
         {

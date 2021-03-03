@@ -56,7 +56,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1168512675012551573}
-        m_TargetAssemblyTypeName: WeaponGun, Assembly-CSharp
+        m_TargetAssemblyTypeName: WeaponHandCannon, Assembly-CSharp
         m_MethodName: ShootBullet
         m_Mode: 1
         m_Arguments:
@@ -71,7 +71,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
-  timeBetweenShots: 3
+  tracerShotInterval: 0
+  timeBetweenShots: 1.5
   firingPoint: {fileID: 5315651826542755955}
   spread: 1
 --- !u!1 &4440753974534500328

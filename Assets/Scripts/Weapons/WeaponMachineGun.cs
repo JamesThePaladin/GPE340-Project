@@ -16,12 +16,18 @@ public class WeaponMachineGun : WeaponGun
     // Update is called once per frame
     public override void Update()
     {
+
+        base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
         if (_isShootingFullAuto)
         {
             ShootBullet();
+            CheckAndDoTracer();
         }
-
-        base.Update();
+        base.FixedUpdate();
     }
 
     public override void AttackStart()

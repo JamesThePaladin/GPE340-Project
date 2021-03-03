@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f2c3347129774294df44df1a26591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 4
   owner: {fileID: 0}
   rightHandPoint: {fileID: 1975822739394769722}
   leftHandPoint: {fileID: 1975822738839531648}
@@ -149,6 +149,18 @@ MonoBehaviour:
       - m_Target: {fileID: -55651732101161904}
         m_TargetAssemblyTypeName: WeaponMachineGun, Assembly-CSharp
         m_MethodName: StartFullAuto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -55651732101161904}
+        m_TargetAssemblyTypeName: WeaponGun, Assembly-CSharp
+        m_MethodName: CheckAndDoTracer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -174,9 +186,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
-  timeBetweenShots: 0.3
+  tracerShotInterval: 20
+  timeBetweenShots: 0.01
+  nextShootTime: 0
   firingPoint: {fileID: 3111448077095474227}
-  spread: 8
+  spread: 1
 --- !u!1 &7419107360340858741
 GameObject:
   m_ObjectHideFlags: 0

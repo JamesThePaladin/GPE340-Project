@@ -5,23 +5,23 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [Header("Components")]
-    public Pawn owner;
-    private Rigidbody rb;
+    public Pawn owner; //the person who fired this bullet
+    private Rigidbody rb; //the rigidbody of the bullet
     [Header("Bullet Settings")]
-    public float fireSpeed;
-    public float damageDone;
-    public float lifespan = 1.5f;
+    public float fireSpeed; //the speed of the bullet
+    public float damageDone; //damage done by the bullet, recieved from weapon
+    public float lifespan = 1.5f; //the time the bullet has in the scene before it destroys itself
 
-
+    private void Awake()
+    {
+        // get the bullet rigidbody
+        rb = GetComponent<Rigidbody>();
+    }
     // Start is called before the first frame update
     void Start()
     {
         // set bullet to destroy itself after lifespan has expired
         Destroy(gameObject, lifespan);
-
-        // get the bullet rigidbody
-        rb = GetComponent<Rigidbody>();
-        
     }
 
     // Update is called once per frame
@@ -39,11 +39,12 @@ public class Bullet : MonoBehaviour
         Health otherHealth = otherObject.GetComponent<Health>();
         if (otherHealth != null)
         {
+            //call the damage function on the otherObject's health script to damage them
+            //pas in damage done
             otherHealth.Damage(damageDone);
         }
-
-        //TODO: Addition things the bullet does when it hits another object
-
+        //stop the bullet
+        rb.velocity = new Vector3(0f, 0f, 0f);
         //Destroy this bullet
         Destroy(gameObject);
     }

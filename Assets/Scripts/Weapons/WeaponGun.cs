@@ -14,7 +14,6 @@ public class WeaponGun : Weapon
     protected int shotsFired = 0;
     protected int nextTracerShot;
     public float timeBetweenShots = 1f;
-    [SerializeField]
     protected float nextShootTime;
     public Transform firingPoint;
     [SerializeField,Range(0, 20),Tooltip("This controls the bullet spread of the gun.")]

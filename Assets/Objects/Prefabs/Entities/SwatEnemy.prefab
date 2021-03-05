@@ -248,6 +248,36 @@ Transform:
   m_Father: {fileID: 7555132874629250426}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1132022694143016502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4707032456170122522}
+  m_Layer: 0
+  m_Name: SingleHandGunSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4707032456170122522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132022694143016502}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1634, y: 1.2623, z: 0.723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8567584703730705753}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332457781056308742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1487,36 @@ Transform:
   m_Father: {fileID: 4867194769108504921}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6435769584471049668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641485752936131751}
+  m_Layer: 0
+  m_Name: TwoHandedGunSpawnPoint
+  m_TagString: PlayerWeaponSpawn
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641485752936131751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435769584471049668}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.29, y: 1.186, z: 0.277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8567584703730705753}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6437213082354972534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +2040,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8567584703730705753}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &9112839148893236894
 SkinnedMeshRenderer:
@@ -2114,8 +2174,8 @@ GameObject:
   - component: {fileID: 8173071904491223425}
   - component: {fileID: 8173071904491223426}
   - component: {fileID: 8173071904491223427}
-  - component: {fileID: -3179201291843884950}
   - component: {fileID: -893168880912854400}
+  - component: {fileID: -5351002797603178642}
   - component: {fileID: 2025687437431215910}
   m_Layer: 0
   m_Name: SwatEnemy
@@ -2135,6 +2195,8 @@ Transform:
   m_LocalPosition: {x: -7.9712954, y: -0.03999996, z: -9.528775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4707032456170122522}
+  - {fileID: 1641485752936131751}
   - {fileID: 1054755917342658111}
   - {fileID: 4230707617124451789}
   m_Father: {fileID: 0}
@@ -2270,20 +2332,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &-3179201291843884950
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9056171819299520483}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.2303896
-  m_Height: 1.8130866
-  m_Direction: 1
-  m_Center: {x: 0.011032581, y: 0.9278831, z: 0.011099815}
 --- !u!136 &-893168880912854400
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2293,6 +2341,20 @@ CapsuleCollider:
   m_GameObject: {fileID: 9056171819299520483}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.20571613
+  m_Height: 1.8131804
+  m_Direction: 1
+  m_Center: {x: -0.00018048286, y: 0.9278362, z: 0.015672684}
+--- !u!136 &-5351002797603178642
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056171819299520483}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.20571613
   m_Height: 1.8131804
@@ -2345,7 +2407,7 @@ Transform:
   - {fileID: 14619071427228402}
   - {fileID: 4530207802365605470}
   m_Father: {fileID: 8567584703730705753}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9152153790897793991
 GameObject:

@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class HumanoidPawn : Pawn
 {
-    [SerializeField, Range(0f, 5f), Tooltip("The speed the player moves in feet/second")] 
-    private float speed = 1f; //player pawn movement speed
-
     public override void Awake()
     {
         base.Awake();
@@ -29,9 +26,6 @@ public class HumanoidPawn : Pawn
     {
         //limit max distance of move vector to 1, level the playing field for joysticks
         moveDirection = moveDirection.normalized;
-        
-        //Convert the moveDirection from local space to world space
-        //moveDirection = transform.InverseTransformDirection(moveDirection);
         
         //if left shift is held down
         if (Input.GetKey(KeyCode.LeftShift))

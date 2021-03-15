@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 4566733034090801201}
   m_Layer: 0
   m_Name: PlayerOnePawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -830,8 +830,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 4566733034090801203}
   weapon: {fileID: 0}
-  sprintBoost: 1.5
   speed: 3
+  sprintBoost: 1.5
+  turnSpeed: 3
 --- !u!114 &4566733034090801201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,8 +845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a76d29c77e626c47a634df91560df0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdoll: {fileID: 997966362310779784, guid: eb83330538c35ff49a77c77c9c1e38af, type: 3}
   MaxHealth: 100
-  health: 25
+  health: 100
   onHeal:
     m_PersistentCalls:
       m_Calls:
@@ -881,7 +883,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4566733034090801201}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: Kill
+        m_MethodName: SpawnRagdoll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

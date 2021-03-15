@@ -5,6 +5,11 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    [Header("Game Objects")]
+    [SerializeField, Tooltip("The ragdoll spawned when a pawn dies")]
+    private GameObject ragdoll;
+    private bool spawnRag = true;
+
     [Header("Health Values")]
     [SerializeField]
     private float MaxHealth = 100f;
@@ -80,5 +85,14 @@ public class Health : MonoBehaviour
     {
         health = 0;
         Destroy(gameObject);
+    }
+
+    public void SpawnRagdoll() 
+    {
+        if (spawnRag == true)
+        {
+            GameObject entityBody = Instantiate(ragdoll, transform.position, transform.rotation); 
+        }
+        spawnRag = false;
     }
 }

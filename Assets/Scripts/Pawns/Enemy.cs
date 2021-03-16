@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
@@ -19,6 +20,9 @@ public class Enemy : MonoBehaviour
     private float distanceToTarget;
     [SerializeField]
     private float shootRadius = 4f;
+    private float currentAngle;
+    [SerializeField]
+    private float fireAngle;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.playerPawn.GetComponent<Transform>();
         _anim = GetComponent<Animator>();
         pawn.SendMessage("EquipDefaultWeapon");
+        weapon = GetComponent<Weapon>();
     }
 
     // Update is called once per frame
@@ -55,6 +60,15 @@ public class Enemy : MonoBehaviour
             //tell the pawn to move in that direction
             pawn.Move(moveDirection);
         }
+
+        currentAngle = GetAngleToTarget();
+        if (currentAngle <= fireAngle) 
+        {
+            if (weapon != null)
+            {
+                weapon.SendMessage("AttackStart"); 
+            }
+        }
     }
 
     private float GetDistanceToTarget() 
@@ -63,6 +77,12 @@ public class Enemy : MonoBehaviour
         return distanceToTarget;
     }
 
+    private float GetAngleToTarget() 
+    {
+        Vector3 targetDir = target.position - pawn.transform.position;
+        float angleToTarget = Vector3.Angle(targetDir, pawn.transform.forward);
+        return angleToTarget;
+    }
     private void OnAnimatorMove() 
     {
         navMeshAgent.velocity = _anim.velocity;

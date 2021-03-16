@@ -35,7 +35,22 @@ public class WeaponShotgun : WeaponGun
         //it happens so fast that they appear to be made at the same time
         for (int i = 0; i < projectileCount; i++)
         {
-            base.ShootBullet();
+            //Instantiate a bullet, have the bullet code do the rest
+            GameObject playerBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation * Quaternion.Euler(Random.onUnitSphere * spread));
+            //get the bullet component from the newly created bullet
+            Bullet playerBulletScript = playerBullet.GetComponent<Bullet>();
+            //set the owner of the bullet to this compnent's owner
+            playerBulletScript.owner = owner;
+            //set it's layer to our owners layer so we don't hit ourselves
+            playerBullet.gameObject.layer = owner.gameObject.layer;
+            //set the bullet's damage equal to our waepon's damage
+            playerBulletScript.damageDone = damage;
+            //delay our next shot
+            nextShootTime = Time.time + timeBetweenShots;
         }
+        //increment the amount of shots fired
+        shotsFired++;
+        //decrement the ammo count
+        currentAmmo--;
     }
 }

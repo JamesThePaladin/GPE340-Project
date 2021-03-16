@@ -4395,10 +4395,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerOnePawn
       objectReference: {fileID: 0}
-    - target: {fileID: 3720292899989357481, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 4101356504953018643, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4442,18 +4438,6 @@ PrefabInstance:
     - target: {fileID: 4101356504953018643, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501966498556425474, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566733034090801200, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566733034090801201, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
-      propertyPath: health
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19c5582bd8f9314d838823146780bc0, type: 3}

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; //variable that holds this instance of the GameManager
-    [Header("Enemy Lists")]
+    [Header("Enemy Data")]
     //list to hold all enemies in game
     public List<GameObject> enemies;
     //list of all enemy prefabs to spawn as enemies
@@ -38,9 +38,15 @@ public class GameManager : MonoBehaviour
     //delay in between pickup spawns
     public float pickupSpawnDelay = 4f;
     [Header("Player Data")]
+    //player game object
     public GameObject playerPawn;
+    //player's health
     public Health Health;
+    //text to display player's health
     public Text healthText;
+    [Header("Weapons Data")]
+    [SerializeField]
+    public List<GameObject> weapons;
     private void Awake()
     {
         // if instance is empty

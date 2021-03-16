@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         pawn = GetComponent<Pawn>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = GameManager.instance.playerPawn.GetComponent<Transform>();
         _anim = GetComponent<Animator>();
+        pawn.SendMessage("EquipDefaultWeapon");
     }
 
     // Update is called once per frame
@@ -32,37 +33,28 @@ public class Enemy : MonoBehaviour
     {
         //get our distance to target
         distanceToTarget = GetDistanceToTarget();
-        //for debugging purposes since stopping distance isnt working, display the distance to target for comparison
-        Debug.Log("Distance to " + target + (" is " + distanceToTarget));
         //look at our target
         pawn.transform.LookAt(target);
         //if our distance to target is less than or equal to our stopping distance
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
-            //Stop
-            Debug.Log("Stopping at stoppingDistance");
+            //change is stopped on the nav Mesh Agent to true
+            navMeshAgent.isStopped = true;
+            //set all animations to 0
+            _anim.SetFloat("Horizontal", 0f);
+            _anim.SetFloat("Vertical", 0f);
+            return;
         }
         //otherwise
         else 
         {
+            //set is stopped to false
+            navMeshAgent.isStopped = false;
             //the direction we want to move in is our target's position minus our position
             moveDirection = target.position - transform.position;
             //tell the pawn to move in that direction
             pawn.Move(moveDirection);
         }
-        //if (distanceToTarget <= shootRadius && weapon != null)
-        //{
-            //attack with our weapon
-            
-        //}
-        //else if (distanceToTarget >= shootRadius && weapon != null)
-        //{
-            //stop attacking with our weapon
-        //}
-        //else 
-        //{
-            //do nothing
-        //}
     }
 
     private float GetDistanceToTarget() 

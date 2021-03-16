@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class HumanoidPawn : Pawn
 {
+    [Header("Components"),Tooltip("Container transforms for equipping/holding weapons.")]
+    [SerializeField]
+    private List<Transform> weaponContainers;
     public override void Awake()
     {
         base.Awake();
@@ -96,5 +99,35 @@ public class HumanoidPawn : Pawn
             //clear hint weight
             _anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 0f);
         }
-    }   
+    }
+
+    public void EquipDefaultWeapon() 
+    {
+        // choose a random weapon to spawn
+        int prefabIndex = Random.Range(0, 2);
+        //if the index number is equal to 0, or the hand cannon
+        if (prefabIndex == 0)
+        {
+            //get the transform of the weapon spawn point on the asset
+            Transform weaponSpawn = GetComponent<Transform>().GetChild(0);
+            //name it weapon and spawn it at that points position, rotation, and as a child of it
+            GameObject Weapon = Instantiate(GameManager.instance.weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+            //get the weapon component of Weapon Object
+            Weapon entityWeapon = Weapon.GetComponent<Weapon>();
+            //make it the entity's weapon
+            weapon = entityWeapon;
+        }
+        //else, it is the rifle or machine gun
+        else
+        {
+            //get the transform of the weapon spawn point on the asset
+            Transform weaponSpawn = GetComponent<Transform>().GetChild(1);
+            //name it weapon and spawn it at that points position, rotation, and as a child of it
+            GameObject Weapon = Instantiate(GameManager.instance.weapons[prefabIndex], weaponSpawn.position, weaponSpawn.rotation, weaponSpawn);
+            //get the weapon component of Weapon Object
+            Weapon entityWeapon = Weapon.GetComponent<Weapon>();
+            //make it the entity's weapon
+            weapon = entityWeapon;
+        }
+    }
 }

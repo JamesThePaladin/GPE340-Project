@@ -833,6 +833,9 @@ MonoBehaviour:
   speed: 3
   sprintBoost: 1.5
   turnSpeed: 3
+  weaponContainers:
+  - {fileID: 114241164}
+  - {fileID: 1508129943}
 --- !u!114 &4566733034090801201
 MonoBehaviour:
   m_ObjectHideFlags: 0

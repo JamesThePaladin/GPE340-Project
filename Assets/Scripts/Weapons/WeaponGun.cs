@@ -16,6 +16,8 @@ public class WeaponGun : Weapon
     public float timeBetweenShots = 1f; //the time in between shots, basically how fast this weapon can fire
     protected float nextShootTime; //variable that keeps track of when the player can shoot again
     public Transform firingPoint; //transform for where the weapon instanitates bullets
+    public int maxAmmo = 10; //max ammo for a gun defaulted to 10
+    public int currentAmmo; //ammount of ammo the gun currently has
     [SerializeField,Range(0, 20),Tooltip("This controls the bullet spread of the gun.")]
     protected float spread = 0; //variation in trajectory for each bullet
 
@@ -28,6 +30,8 @@ public class WeaponGun : Weapon
     // Start is called before the first frame update
     public override void Start()
     {
+        //set current ammo equal to max so that our clip is full when the player gets this gun
+        currentAmmo = maxAmmo;
         //set the next time we fire a tracer shot
         nextTracerShot = shotsFired + tracerShotInterval;
         base.Start();
@@ -43,13 +47,20 @@ public class WeaponGun : Weapon
     {
         CanShoot();
         base.FixedUpdate();
+        if (currentAmmo <= 0) 
+        {
+            Destroy(gameObject);
+        }
     }
 
     public override void AttackStart()
     {
-        if (CanShoot())
+        if (currentAmmo > 0)
         {
-            base.AttackStart(); 
+            if (CanShoot())
+            {
+                base.AttackStart();
+            } 
         }
     }
 
@@ -72,13 +83,15 @@ public class WeaponGun : Weapon
         playerBulletScript.damageDone = damage;
         //increment the amount of shots fired
         shotsFired++;
+        //decrement the ammo count
+        currentAmmo--;
         //delay our next shot
         nextShootTime = Time.time + timeBetweenShots;
     }
 
     public bool CanShoot() 
     {
-        //if the current time is greater than our next time we can shoot
+        //if the current time is greater than our next time we can shoot and our ammo is greater than zero
         if (Time.time >= nextShootTime)
         {
             //set next shoot time to our current time

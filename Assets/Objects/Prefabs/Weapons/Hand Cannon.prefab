@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded785f8966c7bd4b9159de12540733e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 50
   owner: {fileID: 0}
   rightHandPoint: {fileID: 8296578919766324031}
   leftHandPoint: {fileID: 0}
@@ -74,6 +74,8 @@ MonoBehaviour:
   tracerShotInterval: 0
   timeBetweenShots: 1.5
   firingPoint: {fileID: 5315651826542755955}
+  maxAmmo: 30
+  currentAmmo: 0
   spread: 1
 --- !u!1 &4440753974534500328
 GameObject:

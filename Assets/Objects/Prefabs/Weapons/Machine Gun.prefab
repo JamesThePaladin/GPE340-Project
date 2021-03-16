@@ -188,8 +188,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
   tracerShotInterval: 20
   timeBetweenShots: 0.01
-  nextShootTime: 0
   firingPoint: {fileID: 3111448077095474227}
+  maxAmmo: 300
+  currentAmmo: 0
   spread: 1
 --- !u!1 &7419107360340858741
 GameObject:

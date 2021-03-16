@@ -134,8 +134,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6685228194488082925, guid: 38bd1f0f06d88b94aa6f09f2c1d597d9, type: 3}
   tracerShotInterval: 0
   timeBetweenShots: 2
-  nextShootTime: 0
   firingPoint: {fileID: 9193301500647312077}
+  maxAmmo: 18
+  currentAmmo: 0
   spread: 10
   projectileCount: 20
 --- !u!1 &3909699464933986749

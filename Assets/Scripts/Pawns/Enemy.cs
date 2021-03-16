@@ -41,8 +41,8 @@ public class Enemy : MonoBehaviour
             //change is stopped on the nav Mesh Agent to true
             navMeshAgent.isStopped = true;
             //set all animations to 0
-            _anim.SetFloat("Horizontal", 0f);
-            _anim.SetFloat("Vertical", 0f);
+            _anim.SetFloat("Forward", 0f);
+            _anim.SetFloat("Right", 0f);
             return;
         }
         //otherwise

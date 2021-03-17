@@ -8,20 +8,15 @@ using UnityEngine.Animations;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    private Weapon weapon;
-    [SerializeField]
     private NavMeshAgent navMeshAgent;
-    [SerializeField]
     private Transform target;
     private Pawn pawn;
     private Vector3 moveDirection;
     private Animator _anim;
-    [SerializeField]
     private float distanceToTarget;
-    [SerializeField]
-    private float shootRadius = 4f;
+    [SerializeField, Range(0, 4), Tooltip("The distance at which AI begin to fire their weapons")]
+    private float fireRadius = 4f;
     private float currentAngle;
-    [SerializeField]
     private float fireAngle;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +25,12 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.playerPawn.GetComponent<Transform>();
         _anim = GetComponent<Animator>();
         pawn.SendMessage("EquipDefaultWeapon");
-        weapon = GetComponent<Weapon>();
+        fireAngle = pawn.weapon.GetComponent<WeaponGun>().GetFireAngle();
+    }
+
+    private void Update()
+    {
+        
     }
 
     // Update is called once per frame
@@ -61,13 +61,27 @@ public class Enemy : MonoBehaviour
             pawn.Move(moveDirection);
         }
 
+        //get current angle to target
         currentAngle = GetAngleToTarget();
-        if (currentAngle <= fireAngle) 
+       //if the distance to our target is less than or equal to our fire radius
+        if (distanceToTarget <= fireRadius)
         {
-            if (weapon != null)
+            // and if our current angle is less than or equal to our weapon's fire angle
+            if (currentAngle <= fireAngle)
             {
-                weapon.SendMessage("AttackStart"); 
+                // and if our pawn's weapon is not null
+                if (pawn.weapon != null)
+                {
+                    //fire your weapon
+                    pawn.weapon.AttackStart();
+                }
             }
+            //else if the our current angle to our target is greater than our acceptable angle to fire
+            else if (currentAngle > fireAngle)
+            {
+                //stop firing
+                pawn.weapon.AttackEnd();
+            } 
         }
     }
 

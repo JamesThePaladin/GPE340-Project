@@ -76,6 +76,7 @@ MonoBehaviour:
   firingPoint: {fileID: 5315651826542755955}
   maxAmmo: 30
   currentAmmo: 0
+  fireAngle: 0.25
   spread: 1
 --- !u!1 &4440753974534500328
 GameObject:

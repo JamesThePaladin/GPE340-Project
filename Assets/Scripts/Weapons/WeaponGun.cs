@@ -18,6 +18,8 @@ public class WeaponGun : Weapon
     public Transform firingPoint; //transform for where the weapon instanitates bullets
     public int maxAmmo = 10; //max ammo for a gun defaulted to 10
     public int currentAmmo; //ammount of ammo the gun currently has
+    [SerializeField,Range(0, 5), Tooltip("The angle acceptable to beging firing this gun at when turning to a target. For AI use.")]
+    private float fireAngle = 1.5f;
     [SerializeField,Range(0, 20),Tooltip("This controls the bullet spread of the gun.")]
     protected float spread = 0; //variation in trajectory for each bullet
 
@@ -47,10 +49,6 @@ public class WeaponGun : Weapon
     {
         CanShoot();
         base.FixedUpdate();
-        if (currentAmmo <= 0) 
-        {
-            Destroy(gameObject);
-        }
     }
 
     public override void AttackStart()
@@ -132,5 +130,10 @@ public class WeaponGun : Weapon
     public void CheckForJam()
     {
         // TODO: Check if the jam chance roll failed -- if so, jam gun
+    }
+
+    public float GetFireAngle() 
+    {
+        return fireAngle;
     }
 }

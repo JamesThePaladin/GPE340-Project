@@ -137,6 +137,7 @@ MonoBehaviour:
   firingPoint: {fileID: 9193301500647312077}
   maxAmmo: 18
   currentAmmo: 0
+  fireAngle: 3
   spread: 10
   projectileCount: 20
 --- !u!1 &3909699464933986749

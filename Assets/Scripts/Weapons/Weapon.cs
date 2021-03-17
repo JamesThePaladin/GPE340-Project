@@ -9,6 +9,10 @@ public abstract class Weapon : MonoBehaviour
     public float damage;
     [SerializeField, Tooltip("The actor owner of this weapon.")]
     protected Pawn owner;
+    public int maxAmmo = 10; //max ammo for a gun defaulted to 10
+    public int currentAmmo; //ammount of ammo the gun currently has
+    [SerializeField, Range(0, 5), Tooltip("The angle acceptable to beging firing this gun at when turning to a target. For AI use.")]
+    protected float fireAngle = 1.5f;
     [Header("IK Points")]
     public Transform rightHandPoint;
     public Transform leftHandPoint;

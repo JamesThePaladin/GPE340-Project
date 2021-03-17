@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         pawn = GetComponent<Pawn>();
         target = GameManager.instance.playerPawn.GetComponent<Transform>();
         _anim = GetComponent<Animator>();

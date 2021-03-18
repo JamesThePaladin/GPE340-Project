@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     private float MaxHealth = 100f;
     [SerializeField]
-    private float health = 100f;
+    private float currentHealth = 100f;
     private float percent;
 
     [Header("Events")]
@@ -28,12 +28,12 @@ public class Health : MonoBehaviour
 
     public float GetHealth() 
     {
-        return health;
+        return currentHealth;
     }
 
     private void SetHealth(float value) 
     {
-        health = value;
+        currentHealth = value;
     }
 
     public float GetMaxHealth() 
@@ -48,33 +48,33 @@ public class Health : MonoBehaviour
 
     public float GetPercent() 
     {
-        percent = health / MaxHealth;
+        percent = currentHealth / MaxHealth;
         return percent;
     }
 
     private void SetPercent() 
     {
-        percent = health / MaxHealth;
+        percent = currentHealth / MaxHealth;
     }
 
     public void Heal(float heal) 
     {
         heal = Mathf.Max(heal, 0f);
-        health = Mathf.Clamp(health + heal, 0f, MaxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + heal, 0f, MaxHealth);
         SendMessage("onHeal", SendMessageOptions.DontRequireReceiver);
     }
 
     public void FullHeal() 
     {
-        health = MaxHealth;
+        currentHealth = MaxHealth;
     }
 
     public void Damage(float damage) 
     {
         damage = Mathf.Max(damage, 0f);
-        health = Mathf.Clamp(health - damage, 0f, MaxHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0f, MaxHealth);
         SendMessage("onDamage", SendMessageOptions.DontRequireReceiver);
-        if (health <= 0f) 
+        if (currentHealth <= 0f) 
         {
            SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
             onDeath.Invoke();
@@ -83,7 +83,7 @@ public class Health : MonoBehaviour
 
     public void Kill() 
     {
-        health = 0;
+        currentHealth = 0;
         Destroy(gameObject);
     }
 

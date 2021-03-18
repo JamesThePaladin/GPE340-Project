@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour
     public Health Health;
     //text to display player's health
     public Text healthText;
+    //player lives
+    public int lives = 3;
     [Header("Weapons Data")]
-    [SerializeField]
     public List<GameObject> weapons;
     private void Awake()
     {
@@ -89,5 +90,79 @@ public class GameManager : MonoBehaviour
                 currentEnemies--;
             }
         }
+    }
+    /// <summary>
+    /// This defines what happens when the player is killed. 
+    /// Such as turning off all renderers and triggers, and decrementing the amount of lives.
+    /// For now it calls respawn or gameover based on the amount of lives a player has.
+    /// That functionality will be changed in the future
+    /// </summary>
+    public void PlayerDeath() 
+    {
+        //set our pawn's is dead bool to true, cause they died
+        playerPawn.GetComponent<HumanoidPawn>().isDead = true;
+
+        /*get the two different types of renderers and trigger collider on our pawn's children
+        note the collider GetComponent only functions correctly because our trigger collider
+        is placed before our regular collider in the inspector hierarchy, if the trigger collider
+        is moved below our player falls through the ground upon death.*/
+        SkinnedMeshRenderer[] _smr = playerPawn.GetComponentsInChildren<SkinnedMeshRenderer>();
+        MeshRenderer[] _mr = playerPawn.GetComponentsInChildren<MeshRenderer>();
+        CapsuleCollider _col = playerPawn.GetComponent<CapsuleCollider>();
+
+        //loop through each of these and disable them
+        foreach (MeshRenderer renderer in _mr) 
+        {
+            renderer.enabled = false;
+        }
+        foreach (SkinnedMeshRenderer renderer in _smr) 
+        {
+            renderer.enabled = false;
+        }
+        //and set the collider to false
+        _col.enabled = false;
+        //if our lives are less than or equal to zero
+        if (lives <= 0)
+        {
+            //TODO make game over function
+        }
+        //otherwise
+        else
+        {
+            //call respawn function
+            Invoke("Respawn", 3f);
+        }
+    }
+
+    /// <summary>
+    /// Respawn is a reverse operation of PlayerDeath().
+    /// Here we enable all renderers and the collider that were previously disabled.
+    /// The player is also issued a full heal and moved to (0, 0, 0) in the scene.
+    /// </summary>
+    public void Respawn() 
+    {
+        //set the is dead bool for our player to false since they are now alive again
+        playerPawn.GetComponent<HumanoidPawn>().isDead = false;
+        //move them to (0, 0, 0)
+        playerPawn.transform.position = Vector3.zero;
+        //heal them to full health by calling the method on their Health script
+        Health.FullHeal();
+        //get their trigger collider and mesh renderers
+        SkinnedMeshRenderer[] _smr = playerPawn.GetComponentsInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider _col = playerPawn.GetComponent<CapsuleCollider>();
+        MeshRenderer[] _mr = playerPawn.GetComponentsInChildren<MeshRenderer>();
+        //go through the array of both renderers and enable them
+        foreach (MeshRenderer renderer in _mr)
+        {
+            renderer.enabled = true;
+        }
+        foreach (SkinnedMeshRenderer renderer in _smr)
+        {
+            renderer.enabled = true;
+        }
+        //enable the trigger collider
+        _col.enabled = true;
+        //decrement the amount of lives the player has
+        lives--;
     }
 }

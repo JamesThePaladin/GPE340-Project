@@ -9,7 +9,7 @@ using UnityEngine.Animations;
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-    private Transform target;
+    private Transform targetPos;
     private Pawn pawn;
     private Vector3 moveDirection;
     private Animator _anim;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         pawn = GetComponent<Pawn>();
-        target = GameManager.instance.playerPawn.GetComponent<Transform>();
+        targetPos = GameManager.instance.playerPawn.GetComponent<Transform>();
         _anim = GetComponent<Animator>();
         pawn.SendMessage("EquipDefaultWeapon");
         fireAngle = pawn.weapon.GetComponent<WeaponGun>().GetFireAngle();
@@ -37,65 +37,84 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //get our distance to target
-        distanceToTarget = GetDistanceToTarget();
-        //look at our target
-        pawn.transform.LookAt(target);
-        //if our distance to target is less than or equal to our stopping distance
-        if (distanceToTarget <= navMeshAgent.stoppingDistance)
+        if (GameManager.instance.playerStatus.isDead == true)
         {
             //change is stopped on the nav Mesh Agent to true
             navMeshAgent.isStopped = true;
+            //stop moving
+            pawn.Move(Vector3.zero);
+            //stop firing
+            pawn.weapon.AttackEnd();
             //set all animations to 0
             _anim.SetFloat("Forward", 0f);
             _anim.SetFloat("Right", 0f);
             return;
         }
-        //otherwise
-        else 
+        else
         {
-            //set is stopped to false
-            navMeshAgent.isStopped = false;
-            //the direction we want to move in is our target's position minus our position
-            moveDirection = target.position - transform.position;
-            //tell the pawn to move in that direction
-            pawn.Move(moveDirection);
-        }
-
-        //get current angle to target
-        currentAngle = GetAngleToTarget();
-       //if the distance to our target is less than or equal to our fire radius
-        if (distanceToTarget <= fireRadius)
-        {
-            // and if our current angle is less than or equal to our weapon's fire angle
-            if (currentAngle <= fireAngle)
+            //get our distance to target
+            distanceToTarget = GetDistanceToTarget();
+            //look at our target
+            pawn.transform.LookAt(targetPos);
+            //if our distance to target is less than or equal to our stopping distance
+            if (distanceToTarget <= navMeshAgent.stoppingDistance)
             {
-                // and if our pawn's weapon is not null
-                if (pawn.weapon != null)
+                //change is stopped on the nav Mesh Agent to true
+                navMeshAgent.isStopped = true;
+                //set all animations to 0
+                _anim.SetFloat("Forward", 0f);
+                _anim.SetFloat("Right", 0f);
+                return;
+            }
+            //otherwise
+            else
+            {
+                //set is stopped to false
+                navMeshAgent.isStopped = false;
+                //the direction we want to move in is our target's position minus our position
+                moveDirection = targetPos.position - transform.position;
+                //tell the pawn to move in that direction
+                pawn.Move(moveDirection);
+            }
+
+            //get current angle to target
+            currentAngle = GetAngleToTarget();
+            //if the distance to our target is less than or equal to our fire radius
+            if (distanceToTarget <= fireRadius)
+            {
+                // and if our current angle is less than or equal to our weapon's fire angle
+                if (currentAngle <= fireAngle)
                 {
-                    //fire your weapon
-                    pawn.weapon.AttackStart();
+                    // and if our pawn's weapon is not null
+                    if (pawn.weapon != null)
+                    {
+                        //fire your weapon
+                        pawn.weapon.AttackStart();
+                    }
+                }
+                //else if the our current angle to our target is greater than our acceptable angle to fire
+                else if (currentAngle > fireAngle)
+                {
+                    //stop firing
+                    pawn.weapon.AttackEnd();
                 }
             }
-            //else if the our current angle to our target is greater than our acceptable angle to fire
-            else if (currentAngle > fireAngle)
-            {
-                //stop firing
-                pawn.weapon.AttackEnd();
-            } 
         }
     }
 
     private float GetDistanceToTarget() 
     {
-        float distanceToTarget = Vector3.Distance(target.position, pawn.transform.position);
+        float distanceToTarget = Vector3.Distance(targetPos.position, pawn.transform.position);
         return distanceToTarget;
     }
 
     private float GetAngleToTarget() 
     {
-        Vector3 targetDir = target.position - pawn.transform.position;
+        //get our target direction by subtracting our position from our target's position
+        Vector3 targetDir = targetPos.position - pawn.transform.position;
+        //get the angle in degrees between our target direction and our forward transform
         float angleToTarget = Vector3.Angle(targetDir, pawn.transform.forward);
+        //return angle
         return angleToTarget;
     }
     private void OnAnimatorMove() 

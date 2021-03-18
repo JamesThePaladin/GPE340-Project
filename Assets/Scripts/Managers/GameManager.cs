@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     [Header("Player Data")]
     //player game object
     public GameObject playerPawn;
+    //player's boolean for if they are dead or not
+    public HumanoidPawn playerStatus;
     //player's health
     public Health Health;
     //text to display player's health
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerPawn = GameObject.FindGameObjectWithTag("Player");
+        playerStatus = playerPawn.GetComponent<HumanoidPawn>();
         Health = playerPawn.GetComponent<Health>();
         healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>();
     }
@@ -100,7 +103,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath() 
     {
         //set our pawn's is dead bool to true, cause they died
-        playerPawn.GetComponent<HumanoidPawn>().isDead = true;
+        playerStatus.isDead = true;
 
         /*get the two different types of renderers and trigger collider on our pawn's children
         note the collider GetComponent only functions correctly because our trigger collider
@@ -142,7 +145,7 @@ public class GameManager : MonoBehaviour
     public void Respawn() 
     {
         //set the is dead bool for our player to false since they are now alive again
-        playerPawn.GetComponent<HumanoidPawn>().isDead = false;
+        playerStatus.isDead = false;
         //move them to (0, 0, 0)
         playerPawn.transform.position = Vector3.zero;
         //heal them to full health by calling the method on their Health script

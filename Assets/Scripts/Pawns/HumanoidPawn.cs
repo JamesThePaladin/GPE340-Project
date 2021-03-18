@@ -104,7 +104,7 @@ public class HumanoidPawn : Pawn
     public void EquipDefaultWeapon() 
     {
         // choose a random weapon to spawn
-        int prefabIndex = Random.Range(0, 2);
+        int prefabIndex = Random.Range(0, GameManager.instance.weapons.Count -1);
         //if the index number is equal to 0, or the hand cannon
         if (prefabIndex == 0)
         {

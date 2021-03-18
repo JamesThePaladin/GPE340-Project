@@ -45,13 +45,11 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void AttackStart() 
     {
-        // TODO: This is what happens when any attack starts
         OnAttackStart.Invoke();
     }
 
     public virtual void AttackEnd() 
     {
-        // TODO: This is what happens when any attack ends
         OnAttackEnd.Invoke();
     }
 

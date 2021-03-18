@@ -36,7 +36,7 @@ public class InputController : Controller
                 //draw a line so we can see it
                 Debug.DrawLine(camRay.origin, pointToLook, UnityEngine.Color.blue);
                 //look at the point
-                pawn.transform.LookAt(pointToLook);
+                pawn.transform.LookAt(pointToLook, Vector3.up);
             }
 
             //send our inputs to our pawn.

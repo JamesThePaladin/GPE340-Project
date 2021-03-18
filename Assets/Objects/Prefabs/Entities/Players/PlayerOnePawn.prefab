@@ -833,6 +833,7 @@ MonoBehaviour:
   speed: 3
   sprintBoost: 1.5
   turnSpeed: 100
+  isDead: 0
   weaponContainers:
   - {fileID: 114241164}
   - {fileID: 1508129943}
@@ -896,7 +897,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 451190979362370748, guid: 6afbdb71e1bf0f845bd6cd3c2df3b33c, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerDeath
         m_Mode: 1

@@ -6,13 +6,11 @@ public class CameraManager : MonoBehaviour
 {
     public Transform target;
     public float smoothing = 5f;
-    Vector3 offset;
+    public Vector3 offset;
 
     // Use this for initialization
     void Start()
     {
-        //get offset of GameObject and Camera
-        offset = transform.position - target.position;
 
     }
 
@@ -22,7 +20,7 @@ public class CameraManager : MonoBehaviour
         //set the desired camera position equal to the GameObject's plus the offset
         Vector3 targetCamPos = target.position + offset;
         //make it smooth
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+        transform.position = Vector3.Slerp(transform.position, targetCamPos, smoothing * Time.fixedDeltaTime);
 
     }
 }

@@ -454,11 +454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.839
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.938
+      value: -5.98
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1204,6 +1204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 543450653711438849}
   smoothing: 5
+  offset: {x: 0, y: 10, z: -1.5}
 --- !u!1 &569284425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3720292899989357481, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
@@ -2408,11 +2409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.839
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.938
+      value: -5.98
       objectReference: {fileID: 0}
     - target: {fileID: 4541713710261818656, guid: 05349e23186ed2e459c5c9005622ac17, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4401,6 +4402,10 @@ PrefabInstance:
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1223805806}
+    - target: {fileID: 4566733034090801206, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
 --- !u!1001 &7793617323679434069

@@ -37,10 +37,8 @@ public class InputController : Controller
                 Debug.DrawLine(camRay.origin, pointToLook, UnityEngine.Color.blue);
                 //get our rotation instructions from our
                 Quaternion desiredRotation = Quaternion.LookRotation(pointToLook - pawn.transform.position, Vector3.up);
-                //rotate towards our target starting from our current rotation to the desired rotation 
-                pawn.transform.rotation = Quaternion.RotateTowards(pawn.transform.rotation, desiredRotation, pawn.turnSpeed * Time.deltaTime);
-                //look at the point
-                //pawn.transform.LookAt(pointToLook, Vector3.up);
+                //rotate towards our target starting from our current rotation to the desired rotation, set the x and z of desired rotation to zero because of undesirable results 
+                pawn.transform.rotation = Quaternion.RotateTowards(pawn.transform.rotation, new Quaternion(0, desiredRotation.y, 0, desiredRotation.w), pawn.turnSpeed * Time.deltaTime);
             }
 
             //send our inputs to our pawn.
@@ -69,6 +67,8 @@ public class InputController : Controller
         {
             //don't move at all
             pawn.Move(Vector3.zero);
+            //stop attacking if you are
+            pawn.weapon.AttackEnd();
         }
         base.Update();
     }

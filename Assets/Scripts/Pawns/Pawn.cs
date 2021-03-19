@@ -18,7 +18,7 @@ public abstract class Pawn : MonoBehaviour
     public float speed = 1f; //player pawn movement speed
     [Range(0f, 3f), Tooltip("The amount the speed is multiplied by when the player is sprinting.")]
     public float sprintBoost = 1f; //for player sprint boost
-    [Range(0f, 100f), Tooltip("This variable controls how fast the pawn turns towards its target in degrees per second.")]
+    [Range(0f, 1000f), Tooltip("This variable controls how fast the pawn turns towards its target in degrees per second.")]
     public float turnSpeed = 3f; //how fast our pawn turns towards something
     [HideInInspector]
     public bool isDead = false; //boolean for controlling functions if dead.

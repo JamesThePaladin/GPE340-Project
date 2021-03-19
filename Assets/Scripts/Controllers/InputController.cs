@@ -29,14 +29,18 @@ public class InputController : Controller
             //create a plan to intersect our raycast as "the ground"
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
-            if (groundPlane.Raycast(camRay, out float rayLength))
+            if (groundPlane.Raycast(camRay, out float rayPoint))
             {
                 //get the point of intersection between the raycast and the plane
-                Vector3 pointToLook = camRay.GetPoint(rayLength);
+                Vector3 pointToLook = camRay.GetPoint(rayPoint);
                 //draw a line so we can see it
                 Debug.DrawLine(camRay.origin, pointToLook, UnityEngine.Color.blue);
+                //get our rotation instructions from our
+                Quaternion desiredRotation = Quaternion.LookRotation(pointToLook - pawn.transform.position, Vector3.up);
+                //rotate towards our target starting from our current rotation to the desired rotation 
+                pawn.transform.rotation = Quaternion.RotateTowards(pawn.transform.rotation, desiredRotation, pawn.turnSpeed * Time.deltaTime);
                 //look at the point
-                pawn.transform.LookAt(pointToLook, Vector3.up);
+                //pawn.transform.LookAt(pointToLook, Vector3.up);
             }
 
             //send our inputs to our pawn.

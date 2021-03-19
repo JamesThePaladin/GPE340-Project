@@ -110,6 +110,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   owner: {fileID: 0}
+  maxAmmo: 18
+  currentAmmo: 0
+  fireAngle: 3.35
   rightHandPoint: {fileID: 430002435009087532}
   leftHandPoint: {fileID: 4479659414809585020}
   RightElbowPoint: {fileID: 3765052531327561011}
@@ -135,9 +138,6 @@ MonoBehaviour:
   tracerShotInterval: 0
   timeBetweenShots: 2
   firingPoint: {fileID: 9193301500647312077}
-  maxAmmo: 18
-  currentAmmo: 0
-  fireAngle: 3
   spread: 10
   projectileCount: 20
 --- !u!1 &3909699464933986749

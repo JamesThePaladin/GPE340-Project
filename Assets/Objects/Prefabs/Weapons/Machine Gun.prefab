@@ -140,6 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   owner: {fileID: 0}
+  maxAmmo: 300
+  currentAmmo: 0
+  fireAngle: 1.84
   rightHandPoint: {fileID: 1975822739394769722}
   leftHandPoint: {fileID: 1975822738839531648}
   RightElbowPoint: {fileID: 1770497983594294084}
@@ -189,8 +192,6 @@ MonoBehaviour:
   tracerShotInterval: 20
   timeBetweenShots: 0.01
   firingPoint: {fileID: 3111448077095474227}
-  maxAmmo: 300
-  currentAmmo: 0
   spread: 1
 --- !u!1 &7419107360340858741
 GameObject:

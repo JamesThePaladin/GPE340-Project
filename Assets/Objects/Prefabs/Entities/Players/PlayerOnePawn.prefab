@@ -832,7 +832,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   speed: 3
   sprintBoost: 1.5
-  turnSpeed: 100
+  turnSpeed: 349
   isDead: 0
   weaponContainers:
   - {fileID: 114241164}

@@ -14,10 +14,11 @@ public class Enemy : MonoBehaviour
     private Vector3 moveDirection;
     private Animator _anim;
     private float distanceToTarget;
-    [SerializeField, Range(0, 4), Tooltip("The distance at which AI begin to fire their weapons")]
+    [SerializeField, Range(0, 10), Tooltip("The distance at which AI begin to fire their weapons")]
     private float fireRadius = 4f;
     private float currentAngle;
     private float fireAngle;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         _anim = GetComponent<Animator>();
         pawn.SendMessage("EquipDefaultWeapon");
         fireAngle = pawn.weapon.GetComponent<WeaponGun>().GetFireAngle();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -43,6 +45,8 @@ public class Enemy : MonoBehaviour
             navMeshAgent.isStopped = true;
             //stop moving
             pawn.Move(Vector3.zero);
+            //stop rotating
+            rb.velocity = Vector3.zero;
             //stop firing
             pawn.weapon.AttackEnd();
             //set all animations to 0
@@ -52,31 +56,12 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            //get our rotation instructions from our
+            Quaternion desiredRotation = Quaternion.LookRotation(targetPos.position - transform.position, Vector3.up);
+            //rotate towards our target starting from our current rotation to the desired rotation 
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, pawn.turnSpeed * Time.fixedDeltaTime);
             //get our distance to target
             distanceToTarget = GetDistanceToTarget();
-            //look at our target
-            pawn.transform.LookAt(targetPos);
-            //if our distance to target is less than or equal to our stopping distance
-            if (distanceToTarget <= navMeshAgent.stoppingDistance)
-            {
-                //change is stopped on the nav Mesh Agent to true
-                navMeshAgent.isStopped = true;
-                //set all animations to 0
-                _anim.SetFloat("Forward", 0f);
-                _anim.SetFloat("Right", 0f);
-                return;
-            }
-            //otherwise
-            else
-            {
-                //set is stopped to false
-                navMeshAgent.isStopped = false;
-                //the direction we want to move in is our target's position minus our position
-                moveDirection = targetPos.position - transform.position;
-                //tell the pawn to move in that direction
-                pawn.Move(moveDirection);
-            }
-
             //get current angle to target
             currentAngle = GetAngleToTarget();
             //if the distance to our target is less than or equal to our fire radius
@@ -98,6 +83,26 @@ public class Enemy : MonoBehaviour
                     //stop firing
                     pawn.weapon.AttackEnd();
                 }
+            }
+            //if our distance to target is less than or equal to our stopping distance
+            if (distanceToTarget <= navMeshAgent.stoppingDistance)
+            {
+                //change is stopped on the nav Mesh Agent to true
+                navMeshAgent.isStopped = true;
+                //set all animations to 0
+                _anim.SetFloat("Forward", 0f);
+                _anim.SetFloat("Right", 0f);
+                return;
+            }
+            //otherwise
+            else
+            {
+                //set is stopped to false
+                navMeshAgent.isStopped = false;
+                //the direction we want to move in is our target's position minus our position
+                moveDirection = targetPos.position - transform.position;
+                //tell the pawn to move in that direction
+                pawn.Move(moveDirection);
             }
         }
     }

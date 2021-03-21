@@ -26,12 +26,12 @@ public class PickupSpawner : Spawner
                 //declare a random int between 0 and the max number of enemy prefabs in their list
                 int random = Random.Range(0, GameManager.instance.pickupPrefabs.Count);
                 //instantiate an enemy using our random int at this objects position
-                GameObject enemy = Instantiate(GameManager.instance.pickupPrefabs[random], tf.position, tf.rotation);
+                GameObject item = Instantiate(GameManager.instance.pickupPrefabs[random], tf.position, tf.rotation);
                 //name it something meaningful, in this case, the name of the prefab it chose
                 //and the number it is in the current enemies count
-                enemy.name = GameManager.instance.pickupPrefabs[random] + "_" + GameManager.instance.currentPickups;
+                item.name = GameManager.instance.pickupPrefabs[random] + "_" + GameManager.instance.currentPickups;
                 //add it to the GameManager's list of enemies
-                GameManager.instance.pickups.Add(enemy);
+                GameManager.instance.pickups.Add(item);
                 //set the next spawn time equal to now plus enemy spawn delay
                 nextSpawnTime = Time.time + GameManager.instance.pickupSpawnDelay;
                 //increment the number of current enemies

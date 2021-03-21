@@ -2177,6 +2177,7 @@ GameObject:
   - component: {fileID: -893168880912854400}
   - component: {fileID: -5351002797603178642}
   - component: {fileID: 2025687437431215910}
+  - component: {fileID: 8977100341956808091}
   m_Layer: 7
   m_Name: SwatEnemy
   m_TagString: Untagged
@@ -2312,6 +2313,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8977100341956808091}
+        m_TargetAssemblyTypeName: DropManager, Assembly-CSharp
+        m_MethodName: RandomItemDrop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8173071904491223426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,6 +2404,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8977100341956808091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056171819299520483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f86ed84daf1ec641b94aaa54869b96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - dropItem: {fileID: 8841154554496043396, guid: 424c095f33c646149a6e4b79fc4e804a, type: 3}
+    weight: 1000
+  - dropItem: {fileID: 2741804759452755744, guid: 2040d744302dd4c4298c86fc6c7fd67e, type: 3}
+    weight: 1000
+  - dropItem: {fileID: 640921834022632038, guid: 69fd0d61055b37f4c9ebb06c4768cf0c, type: 3}
+    weight: 200
+  - dropItem: {fileID: 3424792082959386124, guid: 0b4e4c38c38815f46b3d21a8b6578f0e, type: 3}
+    weight: 300
+  - dropItem: {fileID: 2727014551481199248, guid: 0e399a64178d17040824f210adbeaf37, type: 3}
+    weight: 200
+  - dropItem: {fileID: 1657860444776031817, guid: 7da9dd4c9ceb63d4095d3ca573c43cd7, type: 3}
+    weight: 100
+  offset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &9108975569606925496
 GameObject:
   m_ObjectHideFlags: 0

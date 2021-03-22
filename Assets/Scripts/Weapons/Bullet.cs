@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class Bullet : MonoBehaviour
         if (otherHealth != null)
         {
             //call the damage function on the otherObject's health script to damage them
-            //pas in damage done
+            //pass in damage done
             otherHealth.Damage(damageDone);
+            //call the other object's health onDamage function
+            otherHealth.InvokeOnDamage();
         }
         //stop the bullet
         rb.velocity = new Vector3(0f, 0f, 0f);

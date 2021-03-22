@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Managers")]
     public static GameManager instance; //variable that holds this instance of the GameManager
+    public UIManager uiManager;
     [Header("Enemy Data")]
     //list to hold all enemies in game
     public List<GameObject> enemies;
@@ -44,12 +46,11 @@ public class GameManager : MonoBehaviour
     public HumanoidPawn playerStatus;
     //player's health
     public Health Health;
-    //text to display player's health
-    public Text healthText;
     //player lives
     public int lives = 3;
     [Header("Weapons Data")]
     public List<GameObject> weapons;
+    public bool isGameStart = false;
     private void Awake()
     {
         // if instance is empty
@@ -74,13 +75,12 @@ public class GameManager : MonoBehaviour
         playerPawn = GameObject.FindGameObjectWithTag("Player");
         playerStatus = playerPawn.GetComponent<HumanoidPawn>();
         Health = playerPawn.GetComponent<Health>();
-        healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.text = string.Format("Health: {0}%", Mathf.RoundToInt(Health.GetPercent() * 100f));
         //for each enemy in the enemies list
         foreach (GameObject enemy in enemies.ToList()) 
         {
@@ -163,6 +163,8 @@ public class GameManager : MonoBehaviour
         {
             renderer.enabled = true;
         }
+        //update their health display
+        uiManager.RegisterPlayer(playerStatus);
         //enable the trigger collider
         _col.enabled = true;
         //decrement the amount of lives the player has

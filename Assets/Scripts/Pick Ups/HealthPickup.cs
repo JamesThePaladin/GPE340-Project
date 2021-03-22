@@ -32,6 +32,8 @@ public class HealthPickup : Pickup
         {
             //pass the heal amount to their heal function
             entityHealth.Heal(healAmount);
+            //call the entity's on heal function
+            entityHealth.InvoneOnHeal();
             //destroy object
             base.OnPickUp(entity); 
         }

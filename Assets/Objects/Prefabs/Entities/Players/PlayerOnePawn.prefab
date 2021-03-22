@@ -829,6 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 4566733034090801203}
+  pawnHealth: {fileID: 0}
   weapon: {fileID: 0}
   speed: 3
   sprintBoost: 1.5
@@ -855,10 +856,10 @@ MonoBehaviour:
   onHeal:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4566733034090801201}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: Heal
-        m_Mode: 4
+      - m_Target: {fileID: 4566733034090801200}
+        m_TargetAssemblyTypeName: HumanoidPawn, Assembly-CSharp
+        m_MethodName: UpdateHealthDisplay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -870,10 +871,10 @@ MonoBehaviour:
   onDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4566733034090801201}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: Damage
-        m_Mode: 4
+      - m_Target: {fileID: 4566733034090801200}
+        m_TargetAssemblyTypeName: HumanoidPawn, Assembly-CSharp
+        m_MethodName: UpdateHealthDisplay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

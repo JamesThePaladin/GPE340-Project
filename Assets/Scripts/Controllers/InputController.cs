@@ -9,10 +9,14 @@ public class InputController : Controller
 {
     [Header("Components")]
     private Camera mainCam; //main camera for aiming with mouse
+    [SerializeField]
+    private UIManager uiManager;
 
     // Start is called before the first frame update
     public override void Start()
     {
+        uiManager.RegisterPlayer(pawn);
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         //find our main camera on start
         mainCam = FindObjectOfType<Camera>();
         base.Start();
@@ -21,6 +25,11 @@ public class InputController : Controller
     // Update is called once per frame
     public override void Update()
     {
+        if (GameManager.instance.isGameStart == true) 
+        {
+            //TODO: Add this back in when scene switching is set up
+            //uiManager.RegisterPlayer(pawn as HumanoidPawn);
+        }
         //if our pawn is not dead
         if (pawn.isDead == false)
         {

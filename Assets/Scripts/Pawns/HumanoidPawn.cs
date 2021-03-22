@@ -130,4 +130,9 @@ public class HumanoidPawn : Pawn
             weapon = entityWeapon;
         }
     }
+
+    public void UpdateHealthDisplay()
+    {
+        GameManager.instance.uiManager.RegisterPlayer(this);
+    }
 }

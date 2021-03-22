@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerWeaponSpawn
   - HealthText
+  - UIManager
+  - PlayerHealthBar
   layers:
   - Default
   - TransparentFX

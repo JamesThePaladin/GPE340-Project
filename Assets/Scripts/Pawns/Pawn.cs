@@ -8,8 +8,8 @@ public abstract class Pawn : MonoBehaviour
     [Header("Components")]
     [SerializeField]
     protected Animator _anim; //animator on player pawn
-    [SerializeField]
-    public Health pawnHealth { get; private set; } //The Health Object attached to this Pawn
+    [HideInInspector]
+    public Health pawnHealth; //The Health Object attached to this Pawn
     private Transform tf; //the transform component of our pawn
     [Header("Weapon Settings"), Tooltip("The weapon an actor currently has equipped.")]
     public Weapon weapon;

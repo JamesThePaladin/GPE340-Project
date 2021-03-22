@@ -93,9 +93,19 @@ public class Health : MonoBehaviour
         if (spawnRag == true)
         {
             //then spawn one at our current position and rotation
-            GameObject entityBody = Instantiate(ragdoll, transform.position, transform.rotation); 
+            Instantiate(ragdoll, transform.position, transform.rotation); 
         }
         //set ragdoll spawning to false
         spawnRag = false;
+    }
+
+    public void InvokeOnDamage() 
+    {
+        onDamage.Invoke();
+    }
+
+    public void InvoneOnHeal() 
+    {
+        onHeal.Invoke();
     }
 }

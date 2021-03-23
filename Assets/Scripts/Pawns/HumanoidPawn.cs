@@ -133,6 +133,6 @@ public class HumanoidPawn : Pawn
 
     public void UpdateHealthDisplay()
     {
-        GameManager.instance.uiManager.RegisterPlayer(this);
+        UIManager.instance.RegisterPlayerHealth(this);
     }
 }

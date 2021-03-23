@@ -57,4 +57,9 @@ public abstract class Weapon : MonoBehaviour
     {
         damage = value;
     }
+
+    public void UpdateAmmoDisplay() 
+    {
+        UIManager.instance.RegisterPlayerAmmo(owner);
+    }
 }

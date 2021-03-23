@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     [Header("Managers")]
     public static GameManager instance; //variable that holds this instance of the GameManager
-    public UIManager uiManager;
     [Header("Enemy Data")]
     //list to hold all enemies in game
     public List<GameObject> enemies;
@@ -41,9 +40,9 @@ public class GameManager : MonoBehaviour
     public float pickupSpawnDelay = 4f;
     [Header("Player Data")]
     //player game object
-    public GameObject playerPawn;
+    public GameObject player;
     //player's boolean for if they are dead or not
-    public HumanoidPawn playerStatus;
+    public HumanoidPawn playerPawn;
     //player's health
     public Health Health;
     //player lives
@@ -72,10 +71,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPawn = GameObject.FindGameObjectWithTag("Player");
-        playerStatus = playerPawn.GetComponent<HumanoidPawn>();
-        Health = playerPawn.GetComponent<Health>();
-        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerPawn = player.GetComponent<HumanoidPawn>();
+        Health = player.GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -103,15 +101,15 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath() 
     {
         //set our pawn's is dead bool to true, cause they died
-        playerStatus.isDead = true;
+        playerPawn.isDead = true;
 
         /*get the two different types of renderers and trigger collider on our pawn's children
         note the collider GetComponent only functions correctly because our trigger collider
         is placed before our regular collider in the inspector hierarchy, if the trigger collider
         is moved below our player falls through the ground upon death.*/
-        SkinnedMeshRenderer[] _smr = playerPawn.GetComponentsInChildren<SkinnedMeshRenderer>();
-        MeshRenderer[] _mr = playerPawn.GetComponentsInChildren<MeshRenderer>();
-        CapsuleCollider _col = playerPawn.GetComponent<CapsuleCollider>();
+        SkinnedMeshRenderer[] _smr = player.GetComponentsInChildren<SkinnedMeshRenderer>();
+        MeshRenderer[] _mr = player.GetComponentsInChildren<MeshRenderer>();
+        CapsuleCollider _col = player.GetComponent<CapsuleCollider>();
 
         //loop through each of these and disable them
         foreach (MeshRenderer renderer in _mr) 
@@ -145,15 +143,15 @@ public class GameManager : MonoBehaviour
     public void Respawn() 
     {
         //set the is dead bool for our player to false since they are now alive again
-        playerStatus.isDead = false;
+        playerPawn.isDead = false;
         //move them to (0, 0, 0)
-        playerPawn.transform.position = Vector3.zero;
+        player.transform.position = Vector3.zero;
         //heal them to full health by calling the method on their Health script
         Health.FullHeal();
         //get their trigger collider and mesh renderers
-        SkinnedMeshRenderer[] _smr = playerPawn.GetComponentsInChildren<SkinnedMeshRenderer>();
-        CapsuleCollider _col = playerPawn.GetComponent<CapsuleCollider>();
-        MeshRenderer[] _mr = playerPawn.GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] _smr = player.GetComponentsInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider _col = player.GetComponent<CapsuleCollider>();
+        MeshRenderer[] _mr = player.GetComponentsInChildren<MeshRenderer>();
         //go through the array of both renderers and enable them
         foreach (MeshRenderer renderer in _mr)
         {
@@ -164,7 +162,9 @@ public class GameManager : MonoBehaviour
             renderer.enabled = true;
         }
         //update their health display
-        uiManager.RegisterPlayer(playerStatus);
+        UIManager.instance.RegisterPlayerHealth(playerPawn);
+        //update their ammo display
+        UIManager.instance.RegisterPlayerAmmo(playerPawn);
         //enable the trigger collider
         _col.enabled = true;
         //decrement the amount of lives the player has

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         pawn = GetComponent<Pawn>();
-        targetPos = GameManager.instance.playerPawn.GetComponent<Transform>();
+        targetPos = GameManager.instance.player.GetComponent<Transform>();
         _anim = GetComponent<Animator>();
         pawn.SendMessage("EquipDefaultWeapon");
         fireAngle = pawn.weapon.GetComponent<WeaponGun>().GetFireAngle();
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameManager.instance.playerStatus.isDead == true)
+        if (GameManager.instance.playerPawn.isDead == true)
         {
             //change is stopped on the nav Mesh Agent to true
             navMeshAgent.isStopped = true;

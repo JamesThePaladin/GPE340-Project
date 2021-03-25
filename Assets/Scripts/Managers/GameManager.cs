@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     [Header("Player Data")]
     //player game object
     public GameObject player;
+    //player gprefab
+    public GameObject playerPrefab;
     //player's boolean for if they are dead or not
     public HumanoidPawn playerPawn;
     //player's health
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     [Header("Weapons Data")]
     public List<GameObject> weapons;
-    public bool isGameStart = false;
+    public bool isGameStart = true;
     private void Awake()
     {
         // if instance is empty
@@ -71,14 +73,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerPawn = player.GetComponent<HumanoidPawn>();
-        Health = player.GetComponent<Health>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isGameStart) 
+        {
+            GameStart();
+        }
         //for each enemy in the enemies list
         foreach (GameObject enemy in enemies.ToList()) 
         {
@@ -169,5 +173,27 @@ public class GameManager : MonoBehaviour
         _col.enabled = true;
         //decrement the amount of lives the player has
         lives--;
+    }
+
+    public void GameStart() 
+    {
+        //if there isnt a player
+        if (!player) 
+        {
+            //spawn one at vector3 zero with no rotation (or quaternion identity its original rotation)
+            GameObject playerOnePawn = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            //set player equal to the newly spawned object
+            player = playerOnePawn;
+            //set our pawn equal to its pawn
+            playerPawn = playerOnePawn.GetComponent<HumanoidPawn>();
+            //and our health equal to its health
+            Health = playerOnePawn.GetComponent<Health>();
+        }
+    }
+
+    public void GameOver() 
+    {
+        //load next scene
+        //reset gamemanager variables
     }
 }

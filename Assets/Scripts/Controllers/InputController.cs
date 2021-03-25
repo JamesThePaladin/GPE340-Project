@@ -21,10 +21,27 @@ public class InputController : Controller
     // Update is called once per frame
     public override void Update()
     {
+        if (!pawn) 
+        {
+            pawn = GameManager.instance.playerPawn;
+        }
         if (GameManager.instance.isGameStart == true) 
         {
             //TODO: Add this back in when scene switching is set up
-            //UIManager.instance.RegisterPlayerHealth(pawn);
+            UIManager.instance.RegisterPlayerHealth(pawn);
+            UIManager.instance.RegisterPlayerAmmo(pawn);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if (UIManager.isPaused)
+            {
+                UIManager.instance.Resume();
+            }
+            else 
+            {
+                UIManager.instance.Pause();
+            }
         }
         //if our pawn is not dead
         if (pawn.isDead == false)

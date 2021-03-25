@@ -886,9 +886,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4566733034090801201}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: SpawnRagdoll
+      - m_Target: {fileID: 451190979362370748, guid: 6afbdb71e1bf0f845bd6cd3c2df3b33c, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -898,9 +898,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 451190979362370748, guid: 6afbdb71e1bf0f845bd6cd3c2df3b33c, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayerDeath
+      - m_Target: {fileID: 4566733034090801201}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: SpawnRagdoll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

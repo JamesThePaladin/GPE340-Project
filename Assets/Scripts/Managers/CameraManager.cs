@@ -17,11 +17,14 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!target) 
+        {
+            target = GameManager.instance.player.transform;
+        }
         //set the desired camera position equal to the GameObject's plus the offset
         Vector3 targetCamPos = target.position + offset;
-        //make it smooth
+        //move towards the target but slow done as you get there
         transform.position = Vector3.Slerp(transform.position, targetCamPos, smoothing * Time.fixedDeltaTime);
-
     }
 }
     

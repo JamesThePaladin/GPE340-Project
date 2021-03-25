@@ -63,12 +63,13 @@ MonoBehaviour:
   currentPickups: 0
   maxPickups: 10
   pickupSpawnDelay: 4
+  player: {fileID: 0}
+  playerPrefab: {fileID: 3720292899989357481, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
   playerPawn: {fileID: 0}
-  playerStatus: {fileID: 0}
   Health: {fileID: 0}
-  healthText: {fileID: 0}
   lives: 3
   weapons:
   - {fileID: 1506534465935502969, guid: 9aa5647443e574f48ab65b5a9c4a1973, type: 3}
   - {fileID: 1975822740324313805, guid: 7a028b39f706b5043a25c54f957508e7, type: 3}
   - {fileID: 1630361220137423573, guid: a7374c30752e5b54294a3f2b93c612a1, type: 3}
+  isGameStart: 0

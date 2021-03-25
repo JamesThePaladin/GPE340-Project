@@ -37,7 +37,7 @@ public abstract class Pawn : MonoBehaviour
 
     public virtual void Update() 
     {
-        
+   
     }
 
     public virtual void Move(Vector3 moveDirection) 

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations;
@@ -33,7 +32,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        
+        if (!targetPos) 
+        {
+            GameManager.instance.player.GetComponent<Transform>();
+        }
     }
 
     // Update is called once per frame

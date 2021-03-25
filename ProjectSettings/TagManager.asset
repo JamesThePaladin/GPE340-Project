@@ -9,6 +9,8 @@ TagManager:
   - UIManager
   - PlayerHealthBar
   - PlayerAmmoDisplay
+  - PlayerAmmoDIsplay
+  - LivesDisplay
   layers:
   - Default
   - TransparentFX

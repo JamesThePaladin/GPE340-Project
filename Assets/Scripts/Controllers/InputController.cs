@@ -25,12 +25,6 @@ public class InputController : Controller
         {
             pawn = GameManager.instance.playerPawn;
         }
-        if (GameManager.instance.isGameStart == true) 
-        {
-            //TODO: Add this back in when scene switching is set up
-            UIManager.instance.RegisterPlayerHealth(pawn);
-            UIManager.instance.RegisterPlayerAmmo(pawn);
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {

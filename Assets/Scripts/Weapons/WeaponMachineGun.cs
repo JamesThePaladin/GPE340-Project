@@ -10,6 +10,7 @@ public class WeaponMachineGun : WeaponGun
     // Start is called before the first frame update
     public override void Start()
     {
+        this.name = "Machine Gun";
         base.Start();
     }
 

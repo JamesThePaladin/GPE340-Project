@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9007737469543824951}
   - component: {fileID: 4070138973755570554}
   - component: {fileID: 8616474285922522741}
+  - component: {fileID: 6764720046481552783}
   m_Layer: 5
   m_Name: Lives
   m_TagString: LivesDisplay
@@ -79,6 +80,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Lives: {0}'
+--- !u!114 &6764720046481552783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043321577360382506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68ee5441c09abf43bcf31a102120b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5335889220012323144
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +103,7 @@ GameObject:
   - component: {fileID: 5335889220012323147}
   - component: {fileID: 5335889220012323189}
   - component: {fileID: 5335889220012323146}
+  - component: {fileID: 1585642500903561596}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: HealthText
@@ -158,6 +172,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Health: {0}%'
+--- !u!114 &1585642500903561596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335889220012323144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5f0ef6dc5a13c44b0eff758aed7529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5335889220572506775
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +270,7 @@ GameObject:
   - component: {fileID: 5335889220586488893}
   - component: {fileID: 5335889220586488895}
   - component: {fileID: 5335889220586488892}
+  - component: {fileID: 1395725554052166380}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: PlayerHealthBar
@@ -309,6 +336,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1395725554052166380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335889220586488882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5336c9bedfcf44c89dac9aaaeb4c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5335889220696680671
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +462,7 @@ GameObject:
   - component: {fileID: 6906824321421174075}
   - component: {fileID: 6163756983633367041}
   - component: {fileID: 4883074834270314574}
+  - component: {fileID: 152189499869319509}
   m_Layer: 5
   m_Name: AmmoDisplay
   m_TagString: PlayerAmmoDisplay
@@ -491,3 +531,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Ammo: 00/00'
+--- !u!114 &152189499869319509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965989450199057147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94307fe22dfc2b4fa7b0a158a29188d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -19,7 +19,11 @@ public class CameraManager : MonoBehaviour
     {
         if (!target) 
         {
-            target = GameManager.instance.player.transform;
+            if (GameManager.instance.player)
+            {
+                target = GameManager.instance.player.transform; 
+
+            }
         }
         //set the desired camera position equal to the GameObject's plus the offset
         Vector3 targetCamPos = target.position + offset;

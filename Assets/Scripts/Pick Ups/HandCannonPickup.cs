@@ -33,6 +33,12 @@ public class HandCannonPickup : Pickup
             Weapon entityWeapon = Weapon.GetComponent<Weapon>();
             //make it the entity's weapon
             entity.weapon = entityWeapon;
+            //if this entity is the player
+            if (entity.CompareTag("Player") == true)
+            {
+                //set the ammo display
+                UIManager.instance.RegisterPlayerAmmo(entity);
+            }
             //destroy pickup through parent method
             base.OnPickUp(entity); 
         }

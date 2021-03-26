@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [Header("Menus")]
-    [SerializeField]
+    //[SerializeField]
     private GameObject mainMenu;
     [SerializeField]
     private GameObject pauseMenu;
@@ -50,19 +50,17 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //TODO: WARNING, YOU STILL HAVE TO ADD THE MAIN MENU TAG
-        mainMenu = GameObject.FindGameObjectWithTag("Main Menu");
+        mainMenu = GameObject.FindGameObjectWithTag("MainMenu");
+        //This was my attempt at adding a listener to the player's OnAttackStart event. It was not functional.
+        //GameManager.instance.playerPawn.weapon.OnAttackStart.AddListener(CheckPlayerAmmo);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isGameStart == true) 
+        if (GameManager.instance.player != null)
         {
-            FindGameStartObjects();
-            RegisterPlayerLives();
-            RegisterPlayerHealth(GameManager.instance.playerPawn);
-            RegisterPlayerAmmo(GameManager.instance.playerPawn);
+            RegisterPlayerAmmo(GameManager.instance.playerPawn); 
         }
     }
 
@@ -98,15 +96,16 @@ public class UIManager : MonoBehaviour
     public void RegisterPlayerAmmo(Pawn player) 
     {
         //if they have a weapon
-        if (player.weapon != null)
+        if (!player.weapon)
         {
-            //set the text to display their current ammo / max ammo
-            playerAmmo.text = string.Format("Ammo: {0}", player.weapon.currentAmmo.ToString() + "/" + player.weapon.maxAmmo.ToString());
+            //dont do anything
+            return;
         }
         //otherwise if they dont have a weapon
         else 
         {
-            //Do nothing
+            //set the text to display their current ammo / max ammo
+            playerAmmo.text = string.Format("Ammo: {0}", player.weapon.currentAmmo.ToString() + "/" + player.weapon.maxAmmo.ToString());
         }
     }
 
@@ -116,7 +115,7 @@ public class UIManager : MonoBehaviour
     public void RegisterPlayerLives() 
     {
         //format the lives from gamemanager into a string and set lives.text equal to it
-        lives.text = string.Format("Lives: {0}", GameManager.instance.lives);
+        lives.text = string.Format("Lives: {0}", GameManager.instance.lives.ToString());
     }
 
     /// <summary>
@@ -148,12 +147,21 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
     }
 
+    public void PlayAgain() 
+    {
+        SceneManager.LoadSceneAsync("Level 1");
+    }
     /// <summary>
     /// This function loads the next scene and is called when starting the game
     /// </summary>
     public void LoadNextScene() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadPreviousScene() 
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     /// <summary>
@@ -166,4 +174,46 @@ public class UIManager : MonoBehaviour
         playerAmmo = GameObject.FindGameObjectWithTag("PlayerAmmoDisplay").GetComponent<Text>();
         lives = GameObject.FindGameObjectWithTag("LivesDisplay").GetComponent<Text>();
     }
+
+    public void SetHealthBarDisplay(Image healthBar) 
+    {
+        playerHealthBar = healthBar;
+    }
+
+    public void SetHealthTextDisplay(Text healthText) 
+    {
+        playerHealthText = healthText;
+    }
+
+    public void SetAmmoDisplay(Text ammo) 
+    {
+        playerAmmo = ammo;
+    }
+    
+    public void SetLivesDisplay(Text livesText) 
+    {
+        lives = livesText;
+    }
+
+    public void SetPauseMenu(GameObject menu) 
+    {
+        pauseMenu = menu;
+    }
+
+    //this was my attempt at making a method to update the ammo only if it has changed, my ammo is acting weird and its not being updated each shot
+    //void CheckPlayerAmmo() 
+    //{
+    //    Debug.Log("Checking Ammo!");
+    //    if (playerAmmo.ToString() == GameManager.instance.playerPawn.weapon.currentAmmo.ToString())
+    //    {
+    //        Debug.Log("It hasn't changed, doing nothing");
+    //        return;
+    //    }
+    //    else 
+    //    {
+    //        Debug.Log("It changed! updating ammo.");
+    //        //set the text to display their current ammo / max ammo
+    //        playerAmmo.text = string.Format("Ammo: {0}", GameManager.instance.playerPawn.weapon.currentAmmo.ToString() + "/" + GameManager.instance.playerPawn.weapon.maxAmmo.ToString());
+    //    }
+    //}
 }

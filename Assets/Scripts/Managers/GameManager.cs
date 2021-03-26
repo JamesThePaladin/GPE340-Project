@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     public HumanoidPawn playerPawn;
     //player's health
     public Health Health;
+    //if the player is dead or not
+    public bool isDead = false;
     //player lives
     public int lives = 3;
     [Header("Weapons Data")]
@@ -105,22 +108,21 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath() 
     {
         //set our pawn's is dead bool to true, cause they died
-        playerPawn.isDead = true;
+        GameManager.instance.isDead = true;
+        if (GameManager.instance.playerPawn.weapon != null)
+        {
+            GameManager.instance.playerPawn.weapon.gameObject.SetActive(false);
+        }
+        CapsuleCollider _col = GameManager.instance.player.GetComponent<CapsuleCollider>();
 
         /*get the two different types of renderers and trigger collider on our pawn's children
         note the collider GetComponent only functions correctly because our trigger collider
         is placed before our regular collider in the inspector hierarchy, if the trigger collider
         is moved below our player falls through the ground upon death.*/
-        SkinnedMeshRenderer[] _smr = player.GetComponentsInChildren<SkinnedMeshRenderer>();
-        MeshRenderer[] _mr = player.GetComponentsInChildren<MeshRenderer>();
-        CapsuleCollider _col = player.GetComponent<CapsuleCollider>();
 
-        //loop through each of these and disable them
-        foreach (MeshRenderer renderer in _mr) 
-        {
-            renderer.enabled = false;
-        }
-        foreach (SkinnedMeshRenderer renderer in _smr) 
+        SkinnedMeshRenderer[] _smr = GameManager.instance.player.GetComponentsInChildren<SkinnedMeshRenderer>();
+        //disable the meshrenderer on the players visual
+        foreach (SkinnedMeshRenderer renderer in _smr)
         {
             renderer.enabled = false;
         }
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
         //if our lives are less than or equal to zero
         if (lives <= 0)
         {
-            //TODO make game over function
+            GameOver();
         }
         //otherwise
         else
@@ -147,32 +149,33 @@ public class GameManager : MonoBehaviour
     public void Respawn() 
     {
         //set the is dead bool for our player to false since they are now alive again
-        playerPawn.isDead = false;
+        GameManager.instance.isDead = false;
         //move them to (0, 0, 0)
-        player.transform.position = Vector3.zero;
+        GameManager.instance.player.transform.position = new Vector3(2, 1, 7);
         //heal them to full health by calling the method on their Health script
         Health.FullHeal();
-        //get their trigger collider and mesh renderers
-        SkinnedMeshRenderer[] _smr = player.GetComponentsInChildren<SkinnedMeshRenderer>();
-        CapsuleCollider _col = player.GetComponent<CapsuleCollider>();
-        MeshRenderer[] _mr = player.GetComponentsInChildren<MeshRenderer>();
-        //go through the array of both renderers and enable them
-        foreach (MeshRenderer renderer in _mr)
+        if (GameManager.instance.playerPawn.weapon != null) 
         {
-            renderer.enabled = true;
+            GameManager.instance.playerPawn.weapon.gameObject.SetActive(true);
         }
+        //get their trigger collider and mesh renderers
+        SkinnedMeshRenderer[] _smr = GameManager.instance.player.GetComponentsInChildren<SkinnedMeshRenderer>();
+        CapsuleCollider _col = GameManager.instance.player.GetComponent<CapsuleCollider>();
         foreach (SkinnedMeshRenderer renderer in _smr)
         {
-            renderer.enabled = true;
+            //enable skin mesh renderer
+            renderer.enabled = true; 
         }
+        //enable the trigger collider
+        _col.enabled = true;
         //update their health display
         UIManager.instance.RegisterPlayerHealth(playerPawn);
         //update their ammo display
         UIManager.instance.RegisterPlayerAmmo(playerPawn);
-        //enable the trigger collider
-        _col.enabled = true;
         //decrement the amount of lives the player has
         lives--;
+        //register player lives
+        UIManager.instance.RegisterPlayerLives();
     }
 
     public void GameStart() 
@@ -181,19 +184,32 @@ public class GameManager : MonoBehaviour
         if (!player) 
         {
             //spawn one at vector3 zero with no rotation (or quaternion identity its original rotation)
-            GameObject playerOnePawn = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            GameObject playerOnePawn = Instantiate(playerPrefab, new Vector3(2, 1, 7), Quaternion.identity);
             //set player equal to the newly spawned object
             player = playerOnePawn;
             //set our pawn equal to its pawn
             playerPawn = playerOnePawn.GetComponent<HumanoidPawn>();
             //and our health equal to its health
             Health = playerOnePawn.GetComponent<Health>();
+            UIManager.instance.RegisterPlayerHealth(playerPawn);
+            UIManager.instance.RegisterPlayerAmmo(playerPawn);
+            UIManager.instance.RegisterPlayerLives();
         }
+        isGameStart = false;
     }
 
     public void GameOver() 
     {
-        //load next scene
-        //reset gamemanager variables
+        SceneManager.LoadSceneAsync("GameOver");
+    }
+
+    public void Win() 
+    {
+        SceneManager.LoadSceneAsync("WinScreen");
+    }
+
+    public void SetGameStart() 
+    {
+        isGameStart = true;
     }
 }

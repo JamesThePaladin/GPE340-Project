@@ -24,8 +24,11 @@ public class WeaponMachineGun : WeaponGun
     {
         if (_isShootingFullAuto)
         {
-            ShootBullet();
-            CheckAndDoTracer();
+            if (currentAmmo > 0)
+            {
+                ShootBullet();
+                CheckAndDoTracer(); 
+            }
         }
         base.FixedUpdate();
     }

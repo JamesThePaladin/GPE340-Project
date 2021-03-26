@@ -111,4 +111,4 @@ MonoBehaviour:
   rotationSpeed: 90
   lifespan: 15
   canDecay: 0
-  damageAmount: 25
+  damageAmount: 100

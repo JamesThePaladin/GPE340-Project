@@ -63,6 +63,12 @@ public class WeaponPickup : Pickup
                 //make it the entity's weapon
                 entity.weapon = entityWeapon;
             }
+            //if this entity is the player
+            if (entity.CompareTag("Player") == true)
+            {
+                //set the ammo display
+                UIManager.instance.RegisterPlayerAmmo(entity);
+            }
             //destroy object
             base.OnPickUp(entity);
         }

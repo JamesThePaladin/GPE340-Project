@@ -73,10 +73,8 @@ public class Health : MonoBehaviour
     {
         damage = Mathf.Max(damage, 0f);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0f, MaxHealth);
-        SendMessage("onDamage", SendMessageOptions.DontRequireReceiver);
         if (currentHealth <= 0f) 
         {
-           SendMessage("onDeath", SendMessageOptions.DontRequireReceiver);
             onDeath.Invoke();
         }
     }
@@ -107,5 +105,13 @@ public class Health : MonoBehaviour
     public void InvoneOnHeal() 
     {
         onHeal.Invoke();
+    }
+
+    /// <summary>
+    /// This exists to call player death on this object instead ofa a prefab
+    /// </summary>
+    public void Die() 
+    {
+        GameManager.instance.PlayerDeath();
     }
 }

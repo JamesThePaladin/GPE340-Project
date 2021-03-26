@@ -67,6 +67,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 3720292899989357481, guid: e19c5582bd8f9314d838823146780bc0, type: 3}
   playerPawn: {fileID: 0}
   Health: {fileID: 0}
+  isDead: 0
   lives: 3
   weapons:
   - {fileID: 1506534465935502969, guid: 9aa5647443e574f48ab65b5a9c4a1973, type: 3}

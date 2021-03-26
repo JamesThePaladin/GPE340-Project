@@ -44,7 +44,7 @@ public class InputController : Controller
             }
         }
         //if our pawn is not dead
-        if (pawn.isDead == false)
+        if (GameManager.instance.isDead == false)
         {
             //make a raycast from screen to mouse position
             Ray camRay = mainCam.ScreenPointToRay(Input.mousePosition);

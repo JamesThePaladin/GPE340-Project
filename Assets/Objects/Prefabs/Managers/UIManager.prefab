@@ -43,8 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452e8ce99aea80e4699b944c9803cc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   optionsMenu: {fileID: 0}
+  menuPrefabs:
+  - {fileID: 632687296479619615, guid: ca4c11ccd3cefec499e315a76c3dfd42, type: 3}
+  - {fileID: 2868497947625203950, guid: ea32903ac128f4a47a915fcc79d7e0b4, type: 3}
+  - {fileID: 5550139533332933682, guid: be5180a9958bae64d8737f10285bb3be, type: 3}
   playerHealthBar: {fileID: 0}
   playerHealthText: {fileID: 0}
+  playerAmmo: {fileID: 0}
+  lives: {fileID: 0}

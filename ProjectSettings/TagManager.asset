@@ -11,6 +11,8 @@ TagManager:
   - PlayerAmmoDisplay
   - PlayerAmmoDIsplay
   - LivesDisplay
+  - PlayerVisual
+  - MainMenu
   layers:
   - Default
   - TransparentFX

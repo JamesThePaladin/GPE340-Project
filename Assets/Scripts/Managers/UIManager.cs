@@ -64,13 +64,40 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenOptionsMenu() 
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        {
+            UIManager.instance.mainMenu.SetActive(false);
+            UIManager.instance.optionsMenu.SetActive(true);
+        }
+        else 
+        {
+            UIManager.instance.pauseMenu.SetActive(false);
+            UIManager.instance.optionsMenu.SetActive(true);
+        }
+    }
+
+    public void CloseOptionsMenu() 
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        {
+            UIManager.instance.optionsMenu.SetActive(false);
+            UIManager.instance.mainMenu.SetActive(true);
+        }
+        else 
+        {
+            UIManager.instance.optionsMenu.SetActive(false);
+            UIManager.instance.pauseMenu.SetActive(true);
+        }
+    }
     /// <summary>
     /// Pauses the game by setting the pause menu panel to active, the game time scale to 0. and isPaused boolean to true
     /// </summary>
     public void Pause()
     {
         //set the pause menu to active
-        pauseMenu.SetActive(true);
+        UIManager.instance.pauseMenu.SetActive(true);
         //set time scale to zero
         Time.timeScale = 0f;
         //set the pause bool to true
@@ -124,7 +151,7 @@ public class UIManager : MonoBehaviour
     public void Resume()
     {
         //set the pause menu's panel to inactive
-        pauseMenu.SetActive(false);
+        UIManager.instance.pauseMenu.SetActive(false);
         //set the time scale back to 1 so that time resumes normally
         Time.timeScale = 1f;
         //set the is paused bool to false
@@ -198,6 +225,11 @@ public class UIManager : MonoBehaviour
     public void SetPauseMenu(GameObject menu) 
     {
         pauseMenu = menu;
+    }
+
+    public void SetOptionsMenu(GameObject menu) 
+    {
+        optionsMenu = menu;
     }
 
     //this was my attempt at making a method to update the ammo only if it has changed, my ammo is acting weird and its not being updated each shot

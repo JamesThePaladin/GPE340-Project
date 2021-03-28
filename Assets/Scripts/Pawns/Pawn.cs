@@ -12,6 +12,7 @@ public abstract class Pawn : MonoBehaviour
     public Health pawnHealth; //The Health Object attached to this Pawn
     private Transform tf; //the transform component of our pawn
     public AudioSource pawnAudio; //audio for pawns
+    public ParticleSystem bloodParticle; //blood particle for pawn hit
     [Header("Weapon Settings"), Tooltip("The weapon an actor currently has equipped.")]
     public Weapon weapon;
     [Header("Movement Settings")]
@@ -28,6 +29,8 @@ public abstract class Pawn : MonoBehaviour
         _anim = GetComponent<Animator>();
         pawnHealth = GetComponent<Health>();
         tf = GetComponent<Transform>();
+        pawnAudio = GetComponentInChildren<AudioSource>();
+        bloodParticle = GetComponentInChildren<ParticleSystem>();
     }
     public virtual void Start() 
     {
@@ -42,5 +45,10 @@ public abstract class Pawn : MonoBehaviour
     public virtual void Move(Vector3 moveDirection) 
     {
         
+    }
+
+    public void PlayHurtSound() 
+    {
+        pawnAudio.Play();
     }
 }

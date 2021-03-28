@@ -7,6 +7,7 @@ public class WeaponGun : Weapon
 {
     [Header("Components")]
     public GameObject bulletPrefab; //the bullet prefab to instatiate bullets for this waapon
+    public ParticleSystem muzzleFlash; //particle system for the muzzle flash
 
     [Header("Firing Settings")]
     [SerializeField, Tooltip("The interval of shots fired between tracer shots")]
@@ -98,7 +99,7 @@ public class WeaponGun : Weapon
 
     public void MuzzleFlash()
     {
-        // TODO: Instantiate muzzle flash
+        muzzleFlash.Emit(1);
     }
 
     public void CheckAndDoTracer()

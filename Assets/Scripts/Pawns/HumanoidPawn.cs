@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class HumanoidPawn : Pawn
@@ -8,6 +9,8 @@ public class HumanoidPawn : Pawn
     [Header("Components"),Tooltip("Container transforms for equipping/holding weapons.")]
     [SerializeField]
     private List<Transform> weaponContainers;
+    [Header("Particle Settings")]
+    public float bleedRate; //rate at which a pawn bleeds blood particles
     public override void Awake()
     {
         base.Awake();
@@ -134,5 +137,13 @@ public class HumanoidPawn : Pawn
     public void UpdateHealthDisplay()
     {
         UIManager.instance.RegisterPlayerHealth(this);
+    }
+
+    public void Bleed() 
+    {
+        if (bloodParticle) 
+        {
+            bloodParticle.Emit(1000);
+        }
     }
 }

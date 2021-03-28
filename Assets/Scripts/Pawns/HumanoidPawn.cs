@@ -10,7 +10,7 @@ public class HumanoidPawn : Pawn
     [SerializeField]
     private List<Transform> weaponContainers;
     [Header("Particle Settings")]
-    public float bleedRate; //rate at which a pawn bleeds blood particles
+    public int bleedAmount; //rate at which a pawn bleeds blood particles
     public override void Awake()
     {
         base.Awake();
@@ -143,7 +143,7 @@ public class HumanoidPawn : Pawn
     {
         if (bloodParticle) 
         {
-            bloodParticle.Emit(1000);
+            bloodParticle.Emit(bleedAmount);
         }
     }
 }

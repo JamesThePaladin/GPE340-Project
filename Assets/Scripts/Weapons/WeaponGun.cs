@@ -99,7 +99,10 @@ public class WeaponGun : Weapon
 
     public void MuzzleFlash()
     {
-        muzzleFlash.Emit(1);
+        if (muzzleFlash)
+        {
+            muzzleFlash.Emit(1); 
+        }
     }
 
     public void CheckAndDoTracer()

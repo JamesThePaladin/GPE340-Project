@@ -51,8 +51,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         mainMenu = GameObject.FindGameObjectWithTag("MainMenu");
-        //This was my attempt at adding a listener to the player's OnAttackStart event. It was not functional.
-        //GameManager.instance.playerPawn.weapon.OnAttackStart.AddListener(CheckPlayerAmmo);
     }
 
     // Update is called once per frame
@@ -231,21 +229,4 @@ public class UIManager : MonoBehaviour
     {
         optionsMenu = menu;
     }
-
-    //this was my attempt at making a method to update the ammo only if it has changed, my ammo is acting weird and its not being updated each shot
-    //void CheckPlayerAmmo() 
-    //{
-    //    Debug.Log("Checking Ammo!");
-    //    if (playerAmmo.ToString() == GameManager.instance.playerPawn.weapon.currentAmmo.ToString())
-    //    {
-    //        Debug.Log("It hasn't changed, doing nothing");
-    //        return;
-    //    }
-    //    else 
-    //    {
-    //        Debug.Log("It changed! updating ammo.");
-    //        //set the text to display their current ammo / max ammo
-    //        playerAmmo.text = string.Format("Ammo: {0}", GameManager.instance.playerPawn.weapon.currentAmmo.ToString() + "/" + GameManager.instance.playerPawn.weapon.maxAmmo.ToString());
-    //    }
-    //}
 }

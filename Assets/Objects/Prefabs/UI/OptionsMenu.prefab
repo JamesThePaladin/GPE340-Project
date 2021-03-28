@@ -554,7 +554,31 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: SelectResolution
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &1669673827969004931
 GameObject:
@@ -1361,7 +1385,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1669673828287957745
 GameObject:
@@ -2031,13 +2067,37 @@ MonoBehaviour:
   m_FillRect: {fileID: 1669673829232952519}
   m_HandleRect: {fileID: 1669673828891417968}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669673828551825330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,13 +2865,37 @@ MonoBehaviour:
   m_FillRect: {fileID: 1669673828926921955}
   m_HandleRect: {fileID: 1669673827874367261}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: SetSoundVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669673828999457752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3849,13 +3933,37 @@ MonoBehaviour:
   m_FillRect: {fileID: 1669673828038543409}
   m_HandleRect: {fileID: 1669673829628698680}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669673829587989081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,7 +4400,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: ActivateApplyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &1669673829695277413
 GameObject:
@@ -4468,10 +4588,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7574decad070033439057fcd42122c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 1f6ed129ac046df48ba0b72dd1e4b846, type: 2}
   resolutionDropDown: {fileID: 1669673827962716319}
   qualityDropDown: {fileID: 1669673829685399924}
   masterSlider: {fileID: 1669673829545823068}
-  soudnSlider: {fileID: 1669673828984412072}
+  soundSlider: {fileID: 1669673828984412072}
   musicSlider: {fileID: 1669673828522340897}
   fullScreenToggle: {fileID: 1669673828224032807}
   applyButton: {fileID: 2344825953478613180}
@@ -4873,7 +4994,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8424201128354539774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8771335123936595699}
+        m_TargetAssemblyTypeName: OptionsFieldPopulator, Assembly-CSharp
+        m_MethodName: SaveSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3701347867705809227
 GameObject:
   m_ObjectHideFlags: 0

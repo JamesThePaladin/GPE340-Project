@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public abstract class Weapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
+    public AudioSource attackSound;
     public float damage;
     [SerializeField, Tooltip("The actor owner of this weapon.")]
     protected Pawn owner;
@@ -24,6 +25,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Awake()
     {
+        attackSound = GetComponentInChildren<AudioSource>();
         owner = gameObject.GetComponentInParent<Pawn>();
     }
     // Start is called before the first frame update
@@ -61,5 +63,10 @@ public abstract class Weapon : MonoBehaviour
     public void UpdateAmmoDisplay() 
     {
         UIManager.instance.RegisterPlayerAmmo(owner);
+    }
+
+    public void PlayAttackSound() 
+    {
+        attackSound.Play();
     }
 }

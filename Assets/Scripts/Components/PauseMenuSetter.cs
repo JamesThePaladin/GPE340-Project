@@ -30,6 +30,6 @@ public class PauseMenuSetter : MonoBehaviour
 
     public void QuitGameRunTime() 
     {
-        UIManager.instance.QuitGame();
+        UIManager.instance.ReturnToMain();
     }
 }

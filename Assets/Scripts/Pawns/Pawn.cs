@@ -11,6 +11,7 @@ public abstract class Pawn : MonoBehaviour
     [HideInInspector]
     public Health pawnHealth; //The Health Object attached to this Pawn
     private Transform tf; //the transform component of our pawn
+    public AudioSource pawnAudio; //audio for pawns
     [Header("Weapon Settings"), Tooltip("The weapon an actor currently has equipped.")]
     public Weapon weapon;
     [Header("Movement Settings")]
